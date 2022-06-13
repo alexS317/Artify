@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+
+    <link rel="stylesheet" type="text/css" href="/public/style.css">
+</head>
+<body>
+    <h1>Artify</h1>
+
+    <form action="/users/<%= user.id %>" method="post">
+
+        <input type="text" name="id" id="id" value="<%= user.id %>" hidden>
+        <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
+        <input type="email" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
+        <input type="password" name="password" id="password" placeholder="Password" value="<%= user.password %>" required>
+        <select name="pronouns" id="pronouns">
+            <option value=""></option>
+            <option value="she">she/her</option>
+            <option value="he">he/him</option>
+            <option value="they">they/them</option>
+            <option value="she">she/they</option>
+            <option value="he">he/they</option>
+            <option value="any">any</option>
+        </select>
+        <input type="text" name="location" id="location" placeholder="Location" value="<%= user.location %>">
+        <input type="text" name="bio" id="bio" placeholder="Add info about yourself ..." value="<%= user.bio %>">
+        <input type="submit" value="Save changes">
+    </form>
+
+</body>
+</html>
