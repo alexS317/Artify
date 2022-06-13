@@ -8,6 +8,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 const path = require('path');       // Import path module to work with directory and file paths
 const ejs = require('ejs');         // Import module Embedded Javascript Templates (EJS)
 

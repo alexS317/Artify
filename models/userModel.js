@@ -1,5 +1,14 @@
+const bcrypt = require('bcrypt');
 const db = require('../services/database').config;
 
+// Select all users
+let getUsers = () => new Promise((resolve, reject) => {
+    db.query(`SELECT * FROM ccl_users`, function (err, users) {
+        if (err) reject(err);
+        console.log(users);
+        resolve(users);
+    });
+});
 
 // Select a specific user
 let getUser = (id) => new Promise((resolve, reject) => {
@@ -12,11 +21,12 @@ let getUser = (id) => new Promise((resolve, reject) => {
 
 
 // Register a new user and insert them into database
-let registerUser = (userData) => new Promise((resolve, reject) => {
+let registerUser = (userData) => new Promise(async function (resolve, reject) {
+    let pw = await bcrypt.hash(userData.password, 10);
     let sql = "INSERT INTO ccl_users (username, email, password) VALUES (" +
         db.escape(userData.username) + "," +
         db.escape(userData.email) + "," +
-        db.escape(userData.password) + ")";
+        db.escape(pw) + ")";
 
     console.log(sql);
 
@@ -27,11 +37,12 @@ let registerUser = (userData) => new Promise((resolve, reject) => {
     });
 });
 
-let updateUser = (userData) => new Promise((resolve, reject) => {
+let updateUser = (userData) => new Promise(async function (resolve, reject) {
+    let pw = await bcrypt.hash(userData.password, 10);
     let sql = "UPDATE ccl_users SET " +
     "username = " + db.escape(userData.username) +
     ", email = " + db.escape(userData.email) +
-    ", password = " + db.escape(userData.password) +
+    ", password = " + db.escape(pw) +
     ", pronouns = " + db.escape(userData.pronouns) +
     ", location = " + db.escape(userData.location) +
     ", bio = " + db.escape(userData.bio) +
@@ -48,6 +59,7 @@ let updateUser = (userData) => new Promise((resolve, reject) => {
 
 
 module.exports = {
+    getUsers,
     getUser,
     registerUser,
     updateUser
