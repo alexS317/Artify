@@ -2,13 +2,11 @@ const express = require('express'); // Import express framework
 const app = express();              // Initialize server
 const port = 3000;
 
+
 // Import body-parser module to handle post requests
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-// const cors = require('cors');
-// app.use(cors());
 
 const path = require('path');       // Import path module to work with directory and file paths
 const ejs = require('ejs');         // Import module Embedded Javascript Templates (EJS)

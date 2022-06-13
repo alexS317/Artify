@@ -29,7 +29,7 @@ let registerUser = (userData) => new Promise((resolve, reject) => {
 
 let updateUser = (userData) => new Promise((resolve, reject) => {
     let sql = "UPDATE ccl_users SET " +
-    "name = " + db.escape(userData.username) +
+    "username = " + db.escape(userData.username) +
     ", email = " + db.escape(userData.email) +
     ", password = " + db.escape(userData.password) +
     ", pronouns = " + db.escape(userData.pronouns) +
