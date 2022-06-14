@@ -10,11 +10,19 @@
 </head>
 <body>
     <h1>Artify</h1>
-    <form action="/register" method="post">
-        <input type="text" name="username" id="username" placeholder="Username" required>
-        <input type="email" name="email" id="email" placeholder="Email" required>
-        <input type="password" name="password" id="password" placeholder="Password" required>
-        <input type="submit" value="Register">
-    </form>
+    
+    <div class="access-form">
+        <div class="links">
+            <a href="/login">Log in</a>
+            <a href="/register" id="selected">Sign up</a>
+        </div>
+        <form action="/register" method="post">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Register">
+        </form>
+        <p>After signing up, log in with your credentials to activate your account.</p>
+    </div>
 </body>
 </html>

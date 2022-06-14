@@ -14,6 +14,7 @@ function editUser(req, res) {
         .catch(error => res.sendStatus(500));
 }
 
+// Update the user's info
 function updateUser(req, res) {
     console.log(req.body);
     userModel.updateUser(req.body)
@@ -24,7 +25,9 @@ function updateUser(req, res) {
 // Register a user and get redirected to their profile afterwards
 function registerUser(req, res) {
     userModel.registerUser(req.body)
-        .then(res.redirect('/user/:id'))
+        .then(res.redirect('/login'))
+        // .then(res.redirect('/user/:id'))
+        // .then(user => res.render('user', {user}))
         .catch(error => res.sendStatus(500));
 }
 

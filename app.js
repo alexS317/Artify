@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+// Import cookie-parser module (parses cookies attached to the client req object)
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 

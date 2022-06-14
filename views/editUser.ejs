@@ -13,7 +13,7 @@
 
     <form action="/users/<%= user.id %>" method="post">
 
-        <input type="text" name="id" id="id" value="<%= user.id %>" hidden>
+        <input type="text" name="id" id="id" value="<%= user.id %>" readonly hidden>
         <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
         <input type="email" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
         <input type="password" name="password" id="password" placeholder="Password" value="<%= user.password %>" required>

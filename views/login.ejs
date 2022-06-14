@@ -10,10 +10,17 @@
 </head>
 <body>
     <h1>Artify</h1>
-    <form action="/login" method="post">
-        <input type="text" name="username" id="username" placeholder="Username" required>
-        <input type="password" name="password" id="password" placeholder="Password" required>
-        <input type="submit" value="Log in">
-    </form>
+   
+    <div class="access-form">
+        <div class="links">
+            <a href="/login" id="selected">Log in</a>
+            <a href="/register">Sign up</a>
+        </div>
+        <form action="/login" method="post">
+            <input type="text" name="username" id="username" placeholder="Username" required><br>
+            <input type="password" name="password" id="password" placeholder="Password" required><br>
+            <input type="submit" value="Log in">
+        </form>
+    </div>
 </body>
 </html>

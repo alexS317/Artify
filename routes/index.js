@@ -1,5 +1,5 @@
 const express = require('express');     // Import Express
-const router = express.Router();
+const router = express.Router();        // Create router object to handle requests
 const userModel = require('../models/userModel');
 const userController = require('../controllers/userController');
 const authenticationService = require('../services/authentication');
@@ -7,10 +7,10 @@ const authenticationService = require('../services/authentication');
 
 // Route to get the index page from the server
 router.get('/', (req, res) => {
-    res.render('index');
+    res.render('index');    // Render page
 });
 
-// Routes to get login page and send login data to the server
+// Routes to get login page and post login data to the server
 router.route('/login')
     .get((req, res) => {
         res.render('login');
@@ -34,6 +34,12 @@ router.route('/register')
         res.render('register');
     })
     .post(userController.registerUser);
+    // .post((req, res) => {
+    //     userController.registerUser;
+    //     userModel.getUsers()
+    //         .then(users => authenticationService.authenticateUser(req.body, users, res))
+    //         .catch(error => res.sendStatus(500));
+    // });
 
 
-module.exports = router;
+module.exports = router;    // Export files as a router to be used in other files

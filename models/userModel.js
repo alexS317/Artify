@@ -20,23 +20,7 @@ let getUser = (id) => new Promise((resolve, reject) => {
 });
 
 
-// Register a new user and insert them into database
-let registerUser = (userData) => new Promise(async function (resolve, reject) {
-    let pw = await bcrypt.hash(userData.password, 10);
-    let sql = "INSERT INTO ccl_users (username, email, password) VALUES (" +
-        db.escape(userData.username) + "," +
-        db.escape(userData.email) + "," +
-        db.escape(pw) + ")";
-
-    console.log(sql);
-
-    db.query(sql, function (err, user) {
-        if (err) reject(err);
-        console.log(user[0]);
-        resolve(userData);
-    });
-});
-
+// Update a user's data and insert it into database
 let updateUser = (userData) => new Promise(async function (resolve, reject) {
     let pw = await bcrypt.hash(userData.password, 10);
     let sql = "UPDATE ccl_users SET " +
@@ -58,9 +42,27 @@ let updateUser = (userData) => new Promise(async function (resolve, reject) {
 });
 
 
+// Register a new user and insert them into database
+let registerUser = (userData) => new Promise(async function (resolve, reject) {
+    let pw = await bcrypt.hash(userData.password, 10);
+    let sql = "INSERT INTO ccl_users (username, email, password) VALUES (" +
+        db.escape(userData.username) + "," +
+        db.escape(userData.email) + "," +
+        db.escape(pw) + ")";
+
+    console.log(sql);
+
+    db.query(sql, function (err, user) {
+        if (err) reject(err);
+        console.log(user);
+        resolve(userData);
+    });
+});
+
+
 module.exports = {
     getUsers,
     getUser,
-    registerUser,
-    updateUser
+    updateUser,
+    registerUser
 }
