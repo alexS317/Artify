@@ -1,8 +1,10 @@
 html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background-color: lightgray; */
+    color: aliceblue;
     text-align: center;
     letter-spacing: 0.5px;
+    background-image: linear-gradient(rgb(44, 44, 46), rgb(108, 108, 110));
+    background-attachment: fixed;
 }
 
 body {
@@ -10,7 +12,8 @@ body {
 }
 
 h1 {
-    background-color: lightcoral;
+    background-color: rgb(105, 77, 241);
+    background-image: linear-gradient(rgb(105, 77, 241), rgb(127, 103, 248));
     font-style: italic;
     font-size: 64px;
     padding: 20px 0 30px;
@@ -20,21 +23,27 @@ h1 {
 a {
     font-size: 1.5rem ;
     font-weight: 700;
-    color: black;
+    color: rgb(64, 67, 67);
     padding: 2.5%;
     text-decoration: none;
     width: 50%;
 }
 #selected {
-    text-decoration: underline;
-    background-color: rgb(255, 212, 218);
+    background-color: rgb(207, 185, 251);
+    border-radius: 20px 20px 0 0;
 }
 a:hover {
-    text-decoration: underline;
+    background-color: rgb(211, 190, 253);
+    border-radius: 20px 20px 0 0;
+}
+
+p {
+    margin-top: 10%;
+    font-weight: 600;
 }
 
 form {
-    margin: 6%;
+    margin: 6% 6% 8%;
 }
 
 input {
@@ -44,16 +53,18 @@ input {
     border-radius: 10px;
     border-width: 0;
     box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
-    padding: 2%;
-    margin: 5%;
+    width: 45%;
+    padding: 1.5%;
+    margin: 2%;
 }
 
 button, input[type=submit] {
-    background-color: darkred;
+    color: aliceblue;
+    background-color: rgb(90, 66, 195);
     font-weight: bold;
     font-size: 1.5rem;
-    padding: 5% 10%;
-    box-shadow: -3px -2px rgb(223, 59, 59);
+    padding: 2% 8%;
+    box-shadow: -3px -4px rgb(178, 160, 251), 2px 3px 7px rgb(73, 56, 125);
 }
 button, input[type=submit]:hover {
     cursor: pointer;
@@ -65,36 +76,43 @@ button, input[type=submit]:active {
 
 
 .access-form {
-    background-color: lightcoral;
+    background-color: rgb(163, 132, 241);
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    padding: 0 0% 2%;
+    padding-bottom: 4%;
     margin: 0 26%;
-    /* margin: auto; */
-    /* width: 44%; */
+    border-radius: 20px;
+    /* box-shadow: 5px 10px 15px rgb(117, 117, 118); */
+    box-shadow: 5px 10px 15px rgb(55, 55, 55);
 }
 
 .links {
     display: flex;
     justify-content: space-around;
     align-content: center;
-    background-color: lightpink;
+    background-color: rgb(232, 222, 255);
     width: 100%;
-    /* padding: 2.5% 0; */
+    border-radius: 20px 20px 0 0;
+
     
 }
 
 
-
+/* Tablet */
 @media screen and (max-width: 1200px) {
     .access-form {
         margin: 0 12%;
     }
 }
 
+/* Phone */
 @media screen and (max-width: 800px) {
     .access-form {
-        margin: 0;
+        margin: 0 5%;
+    }
+    input {
+        width: 60%;
     }
 }

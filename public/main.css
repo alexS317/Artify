@@ -1,0 +1,21 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* color: aliceblue; */
+    text-align: center;
+    letter-spacing: 0.5px;
+    /* background-image: linear-gradient(rgb(44, 44, 46), rgb(108, 108, 110)); */
+    background-attachment: fixed;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    background-color: rgb(105, 77, 241);
+    background-image: linear-gradient(rgb(105, 77, 241), rgb(127, 103, 248));
+    font-style: italic;
+    font-size: 64px;
+    padding: 20px 0 30px;
+    margin: 0 0 100px;
+}
