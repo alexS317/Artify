@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit</title>
+    <title>Edit <%= user.username %></title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
 </head>
@@ -24,8 +24,10 @@
             <option value="they/them">they/them</option>
         </select>
         <input type="text" name="location" id="location" placeholder="Location" value="<%= user.location %>">
+        <input type="file" name="profilepic" id="profilepic" accept=".png, .jpg, .gif">
         <input type="text" name="bio" id="bio" placeholder="Add info about yourself ..." value="<%= user.bio %>">
         <input type="submit" value="Save changes">
+        <button onclick="window.location.href = '/users/<%= user.id %>'">Cancel</button>
     </form>
 
 </body>

@@ -1,11 +1,12 @@
 const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 const db = require('../services/database').config;
 
 // Select all users
 let getUsers = () => new Promise((resolve, reject) => {
     db.query(`SELECT * FROM ccl_users`, function (err, users) {
         if (err) reject(err);
-        console.log(users);
+        // console.log(users);
         resolve(users);
     });
 });
@@ -23,6 +24,14 @@ let getUser = (id) => new Promise((resolve, reject) => {
 // Update a user's data and insert it into database
 let updateUser = (userData) => new Promise(async function (resolve, reject) {
     let pw = await bcrypt.hash(userData.password, 10);
+    function pfpUpload(req, res) {
+        let profilepic = userData.files.profilepic;
+        console.log(profilepic);
+        let filename = '../uploads/' + uuidv4() + '.png';
+        console.log(filename);
+        profilepic.mv(filename);
+        console.log('saved pfp to: ' + filename);
+    }
     let sql = "UPDATE ccl_users SET " +
     "username = " + db.escape(userData.username) +
     ", email = " + db.escape(userData.email) +
@@ -30,6 +39,7 @@ let updateUser = (userData) => new Promise(async function (resolve, reject) {
     ", pronouns = " + db.escape(userData.pronouns) +
     ", location = " + db.escape(userData.location) +
     ", bio = " + db.escape(userData.bio) +
+    // ", profilepic = " + db.escape(pfpUpload()) +
     " WHERE id = " + parseInt(userData.id);
 
     console.log(sql);

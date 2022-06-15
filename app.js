@@ -2,6 +2,12 @@ const express = require('express'); // Import express framework
 const app = express();              // Initialize server
 const port = 3000;
 
+// Import fileupload module to make uploading files easier
+const fileUpload = require('express-fileupload');
+app.use(fileUpload({createParentPath: true}));
+
+const cors = require('cors');
+app.use(cors());
 
 // Import body-parser module to handle post requests
 const bodyParser = require('body-parser');
@@ -11,6 +17,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Import cookie-parser module (parses cookies attached to the client req object)
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
+
+// Import UUID v4 module
+const { v4: uuidv4 } = require('uuid');
+uuidv4();
 
 const path = require('path');       // Import path module to work with directory and file paths
 const ejs = require('ejs');         // Import module Embedded Javascript Templates (EJS)
