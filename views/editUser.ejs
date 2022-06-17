@@ -9,21 +9,31 @@
     <link rel="stylesheet" type="text/css" href="/public/main.css">
 </head>
 <body>
-    <h1>Artify</h1>
+    <header>
+        <h1>Artify</h1>
+        <ul class="main-nav">
+            <li>Discover</li>
+            <li>Forum</li>
+            <li>My Profile</li>
+        </ul>
+        <a href="/logout">Log out</a>
+    </header>
 
-    <form action="/users/<%= user.id %>" method="post">
+    <form action="/users/<%= user.id %>" method="post" class="editing-form">
 
-        <input type="text" name="id" id="id" value="<%= user.id %>" readonly hidden>
-        <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
-        <input type="email" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
-        <input type="text" name="password" id="password" placeholder="Password" value="<%= user.password %>" required>
-        <select name="pronouns" id="pronouns">
-            <option value=""></option>
-            <option value="she/her">she/her</option>
-            <option value="he/him">he/him</option>
-            <option value="they/them">they/them</option>
-        </select>
-        <input type="text" name="location" id="location" placeholder="Location" value="<%= user.location %>">
+        <div class="general-info">
+            <input type="text" name="id" id="id" value="<%= user.id %>" readonly hidden>
+            <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
+            <input type="email" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
+            <input type="password" name="password" id="password" placeholder="Password" value="<%= user.password %>" required>
+            <select name="pronouns" id="pronouns">
+                <option value=""></option>
+                <option value="she/her">she/her</option>
+                <option value="he/him">he/him</option>
+                <option value="they/them">they/them</option>
+            </select>
+            <input type="text" name="location" id="location" placeholder="Location" value="<%= user.location %>">
+        </div>
         <input type="file" name="profilepic" id="profilepic" accept=".png, .jpg">
         <input type="text" name="bio" id="bio" placeholder="Add info about yourself ..." value="<%= user.bio %>">
         <input type="submit" value="Save changes">

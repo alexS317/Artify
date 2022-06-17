@@ -38,12 +38,12 @@ a:hover {
 }
 
 p {
-    margin-top: 10%;
+    margin-top: 0;
     font-weight: 600;
 }
 
 form {
-    margin: 6% 6% 8%;
+    margin: 6%;
 }
 
 input {
@@ -111,6 +111,6 @@ button, input[type=submit]:active {
         margin: 0 5%;
     }
     input {
-        width: 60%;
+        width: 70%;
     }
 }

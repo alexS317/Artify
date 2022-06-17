@@ -11,20 +11,21 @@ async function checkPassword(password, hash) {
 
 // Authenticate user when logging in, check if username and password are correct
 async function authenticateUser({username, password}, users, res) {       // {username, password} from req.body
-    console.log(typeof users);
     const user = users.find(u => {                                        // find the first one that fulfills criteria
-        // console.log(u.username);
-        return u.username === username //&& u.password === passWord;
+        console.log(u.username);
+        return u.username === username; //&& u.password === password;
     });
-    // console.log(user.email);
+    console.log(user.username);
+    console.log(password);
+    console.log(user.password);
     if (user && await checkPassword(password, user.password)) {
         const accessToken = jwt.sign({id: user.id, name: user.username}, AUTH_TOKEN_SECRET);
         res.cookie('accessToken', accessToken);                     // Set cookie name and value
         res.redirect('/users/' + user.id);
         console.log('User ' + user.username + ' logged in.');
     } else {
-        // res.send('Username or password are incorrect.');
-        res.send('user is incorrect');
+        res.send('Username or password are incorrect.');
+        // res.send('user is incorrect');
     }
 }
 

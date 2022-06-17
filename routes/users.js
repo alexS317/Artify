@@ -4,6 +4,7 @@ const path = require('path');
 const userController = require('../controllers/userController');
 const authenticationService = require('../services/authentication');
 const { v4: uuidv4 } = require('uuid');
+const { render } = require('ejs');
 
 // router.use(authenticationService.authenticateJWT);
 
@@ -11,6 +12,8 @@ const { v4: uuidv4 } = require('uuid');
 router.get('/:id', userController.getUser)
 router.get('/:id/edit', userController.editUser);
 router.post('/:id', userController.updateUser);
+
+router.get('/:id/gallery', (req, res) => res.render('userGallery'));
 
 
 router.route('/:id/artwork')

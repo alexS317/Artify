@@ -11,17 +11,31 @@
 <body>
     <header>
         <h1>Artify</h1>
+        <ul class="main-nav">
+            <li>Discover</li>
+            <li>Forum</li>
+            <li>My Profile</li>
+            <!-- <li onclick="window.location.href= '/logout'">Logout</li> -->
+        </ul>
         <a href="/logout">Log out</a>
     </header>
 
-    <div class="user">
-        <p>Username: <%= user.username %> </p>
-        <p>Pronouns: <%= user.pronouns %></p>
-        <p>Location: <%= user.location %> </p>
-        <img id="profile-pic" src="" alt="">
-        <p>Bio: <%= user.bio %> </p>
-    </div>
-    <button onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
-    <button>Delete account</button>
+    <main>
+        <ul class="sub-nav">
+            <li>About</li>
+            <li onclick="window.location.href = '/users/<%= user.id%>/gallery'">Gallery</li>
+            <li>Favorites</li>
+            <li>Subscriptions</li>
+        </ul>
+        <div class="user">
+            <p>Username: <%= user.username %> </p>
+            <p>Pronouns: <%= user.pronouns %></p>
+            <p>Location: <%= user.location %> </p>
+            <img id="profile-pic" src="" alt="">
+            <p>Bio: <%= user.bio %> </p>
+        </div>
+        <button onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
+        <button>Delete account</button>
+    </main>
 </body>
 </html>
