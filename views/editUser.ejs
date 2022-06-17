@@ -7,6 +7,8 @@
     <title>Edit <%= user.username %></title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0" />
 </head>
 <body>
     <header>
@@ -19,26 +21,45 @@
         <a href="/logout">Log out</a>
     </header>
 
+    <!-- <div class="editing-form"> -->
     <form action="/users/<%= user.id %>" method="post" class="editing-form">
 
+        <h3>Edit profile:</h3>
         <div class="general-info">
+            <label for="id" hidden>ID:</label>
             <input type="text" name="id" id="id" value="<%= user.id %>" readonly hidden>
+            <label for="username" hidden>Username:</label>
             <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
+            <label for="email" hidden>Email:</label>
             <input type="email" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
+            <label for="password" hidden>Password:</label>
             <input type="password" name="password" id="password" placeholder="Password" value="<%= user.password %>" required>
+            <label for="pronouns" hidden>Pronouns:</label>
             <select name="pronouns" id="pronouns">
                 <option value=""></option>
                 <option value="she/her">she/her</option>
                 <option value="he/him">he/him</option>
                 <option value="they/them">they/them</option>
             </select>
+            <label for="location" hidden>Location</label>
             <input type="text" name="location" id="location" placeholder="Location" value="<%= user.location %>">
         </div>
-        <input type="file" name="profilepic" id="profilepic" accept=".png, .jpg">
-        <input type="text" name="bio" id="bio" placeholder="Add info about yourself ..." value="<%= user.bio %>">
-        <input type="submit" value="Save changes">
-        <button onclick="window.location.href = '/users/<%= user.id %>'">Cancel</button>
+        <label for="profilepic" id="pfp">
+            <span class="material-symbols-outlined">
+                add_photo_alternate
+            </span>
+            Choose a picture
+        </label>
+        <input type="file" name="profilepic" id="profilepic" accept=".png, .jpg" placeholder="Select picture">
+        <label for="bio" hidden>Bio:</label>
+        <!-- <input type="text" name="bio" id="bio" placeholder="Add info about yourself ..." value="<%= user.bio %>"> -->
+        <textarea name="bio" id="bio" placeholder="Add info about yourself ..."><%= user.bio %></textarea>
+        <div class="buttons">
+            <input type="submit" value="Save changes">
+            <button class="cancel-button" onclick="window.location.href = '/users/<%= user.id %>'">Cancel</button>
+        <!-- </div> -->
     </form>
+    </div>
 
 </body>
 </html>

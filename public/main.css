@@ -26,6 +26,11 @@ h2 {
     width: 100%;
 }
 
+h3 {
+    margin: 10px 15px;
+    justify-self: left;
+}
+
 a {
     color: aliceblue;
     font-size: 1.7rem ;
@@ -51,6 +56,39 @@ header {
     padding: 0 2%;
 }
 
+input {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    border-radius: 10px;
+    border-width: 0;
+    box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
+    width: 50%;
+    padding: 8px;
+    margin: 10px 15px;
+}
+
+button, input[type=submit] {
+    color: aliceblue;
+    background-color: rgb(90, 66, 195);
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-width: 0;
+    border-radius: 10px;
+    padding: 1%;
+    width: 15%;
+    box-shadow: -2px -3px rgb(178, 160, 251), 2px 3px 7px rgb(73, 56, 125);
+    /* box-shadow: none; */
+}
+button, input[type=submit]:hover {
+    cursor: pointer;
+}
+button, input[type=submit]:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+
 
 .main-nav {
     list-style: none;
@@ -67,39 +105,88 @@ header {
     border: 4px aliceblue solid;
 }
 
-
-input {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    border-radius: 10px;
-    border-width: 0;
-    box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
-    width: 20%;
-    padding: 0.7%;
-    margin: 1.5%;
-}
-
-button, input[type=submit] {
-    color: aliceblue;
-    background-color: rgb(90, 66, 195);
-    font-weight: bold;
-    font-size: 1.5rem;
-    padding: 2% 8%;
-    box-shadow: -3px -4px rgb(178, 160, 251), 2px 3px 7px rgb(73, 56, 125);
-}
-button, input[type=submit]:hover {
-    cursor: pointer;
-}
-button, input[type=submit]:active {
-    transform: translateY(2px);
-    box-shadow: none;
-}
-
 .editing-form {
-    display: flex;
+    background-color: rgb(163, 132, 241);
+    margin: 50px 15%;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 5% 45% 40% 10%;
+    height: 75%;
+    /* flex-wrap: wrap;
+    flex-direction: column; */
 }
 
 .general-info {
     display: grid;
+    grid-row: 2;
+}
+
+.buttons {
+    grid-row: 4;
+    grid-column: span 2;
+}
+
+.cancel-button, .delete-button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    background-color: aliceblue;
+    font-weight: bold;
+    width: 15%;
+    border: none;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    border-radius: 10px;
+    padding: 1%;
+    box-shadow: -2px -3px rgb(200, 198, 206), 2px 3px 7px rgb(73, 56, 125);
+    /* box-shadow: none; */
+}
+
+
+
+#pronouns {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    width: 50%;
+    border-radius: 10px;
+    border-width: 0;
+    padding: 9px;
+    margin: 10px 15px;
+    box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
+}
+
+#profilepic {
+    display: none;
+}
+
+#pfp {
+    grid-row: 2;
+    grid-column: 2;
+    color: black;
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    margin: 10px 15px;
+    justify-self: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#pfp:hover {
+    cursor: pointer;
+}
+
+#bio {
+    grid-row: 3;
+    grid-column: span 2;
+    width: 95%;
+    border-radius: 10px;
+    border-width: 0;
+    box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    padding: 5px;
+    margin: 15px;
 }
