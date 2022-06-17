@@ -16,7 +16,7 @@
         <input type="text" name="id" id="id" value="<%= user.id %>" readonly hidden>
         <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
         <input type="email" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
-        <input type="password" name="password" id="password" placeholder="Password" value="<%= user.password %>" required>
+        <input type="text" name="password" id="password" placeholder="Password" value="<%= user.password %>" required>
         <select name="pronouns" id="pronouns">
             <option value=""></option>
             <option value="she/her">she/her</option>
@@ -24,7 +24,7 @@
             <option value="they/them">they/them</option>
         </select>
         <input type="text" name="location" id="location" placeholder="Location" value="<%= user.location %>">
-        <input type="file" name="profilepic" id="profilepic" accept=".png, .jpg, .gif">
+        <input type="file" name="profilepic" id="profilepic" accept=".png, .jpg">
         <input type="text" name="bio" id="bio" placeholder="Add info about yourself ..." value="<%= user.bio %>">
         <input type="submit" value="Save changes">
         <button onclick="window.location.href = '/users/<%= user.id %>'">Cancel</button>

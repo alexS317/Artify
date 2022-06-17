@@ -10,6 +10,10 @@ router.get('/', (req, res) => {
     res.render('index');    // Render page
 });
 
+router.get('/error', (req, res) => {
+    res.render('error');
+})
+
 // Routes to get login page and post login data to the server
 router.route('/login')
     .get((req, res) => {
@@ -20,6 +24,7 @@ router.route('/login')
             .then(users => authenticationService.authenticateUser(req.body, users, res))
             .catch(error => res.sendStatus(500));
     });
+
 
 // Route to get back to homepage when logging out
 router.get('/logout', (req, res) => {

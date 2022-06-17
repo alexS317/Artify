@@ -4,12 +4,13 @@ const db = require('../services/database').config;
 
 // Select all users
 let getUsers = () => new Promise((resolve, reject) => {
-    db.query(`SELECT * FROM ccl_users`, function (err, users) {
+    db.query("SELECT * FROM ccl_users", function (err, users) {
         if (err) reject(err);
         // console.log(users);
         resolve(users);
     });
 });
+
 
 // Select a specific user
 let getUser = (id) => new Promise((resolve, reject) => {

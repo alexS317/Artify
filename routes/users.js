@@ -5,7 +5,7 @@ const userController = require('../controllers/userController');
 const authenticationService = require('../services/authentication');
 const { v4: uuidv4 } = require('uuid');
 
-router.use(authenticationService.authenticateJWT);
+// router.use(authenticationService.authenticateJWT);
 
 // Route to get to the user page
 router.get('/:id', userController.getUser)

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');    // Import JSONWebToken module to be able to authenticate user (with the help of cookies)
-const bcrypt = require('bcrypt');       // Import bcrypt module to be able to encrypt user passwords
 const AUTH_TOKEN_SECRET = require('../secrets').auth_token_secret;
+const bcrypt = require('bcrypt');       // Import bcrypt module to be able to encrypt user passwords
 
 
 // Compare the password user is entering to log in with password in database
@@ -10,17 +10,21 @@ async function checkPassword(password, hash) {
 }
 
 // Authenticate user when logging in, check if username and password are correct
-function authenticateUser({username, password}, users, res) {       // {username, password} from req.body
-const user = users.find(u => {                                      // find the first one that fulfills criteria
-        return u.username === username //&& u.password === password;
+async function authenticateUser({username, password}, users, res) {       // {username, password} from req.body
+    console.log(typeof users);
+    const user = users.find(u => {                                        // find the first one that fulfills criteria
+        // console.log(u.username);
+        return u.username === username //&& u.password === passWord;
     });
-    if (user && checkPassword(password, user.password)) {
-        const accessToken = jwt.sign({id: user.id, username: user.username}, AUTH_TOKEN_SECRET);
+    // console.log(user.email);
+    if (user && await checkPassword(password, user.password)) {
+        const accessToken = jwt.sign({id: user.id, name: user.username}, AUTH_TOKEN_SECRET);
         res.cookie('accessToken', accessToken);                     // Set cookie name and value
         res.redirect('/users/' + user.id);
         console.log('User ' + user.username + ' logged in.');
     } else {
-        res.send('Username or password are incorrect.');
+        // res.send('Username or password are incorrect.');
+        res.send('user is incorrect');
     }
 }
 
