@@ -12,6 +12,7 @@ const { render } = require('ejs');
 router.get('/:id', userController.getUser)
 router.get('/:id/edit', userController.editUser);
 router.post('/:id', userController.updateUser);
+router.post('/:id/delete', userController.deleteUser);
 
 router.get('/:id/gallery', (req, res) => res.render('userGallery'));
 router.get('/:id/artwork', (req, res) => res.render('artwork'));

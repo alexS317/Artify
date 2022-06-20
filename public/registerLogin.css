@@ -58,7 +58,7 @@ input {
     margin: 2%;
 }
 
-button, input[type=submit] {
+input[type=submit] {
     color: aliceblue;
     background-color: rgb(90, 66, 195);
     font-weight: bold;
@@ -66,10 +66,10 @@ button, input[type=submit] {
     padding: 2% 8%;
     box-shadow: -3px -4px rgb(178, 160, 251), 2px 3px 7px rgb(73, 56, 125);
 }
-button, input[type=submit]:hover {
+input[type=submit]:hover {
     cursor: pointer;
 }
-button, input[type=submit]:active {
+input[type=submit]:active {
     transform: translateY(2px);
     box-shadow: none;
 }

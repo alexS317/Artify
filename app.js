@@ -6,6 +6,9 @@ const port = 3000;
 const fileUpload = require('express-fileupload');
 app.use(fileUpload({createParentPath: true}));
 
+const fs = require('fs');
+
+// Import cors module to make requests on other domains
 const cors = require('cors');
 app.use(cors());
 

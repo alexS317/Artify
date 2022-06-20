@@ -7,6 +7,7 @@
     <title>Artify - <%= user.username %></title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
+    <link rel="stylesheet" type="text/css" href="/public/user.css">
 </head>
 <body>
     <header>
@@ -33,11 +34,19 @@
                 <p>Username: <%= user.username %> </p>
                 <p>Pronouns: <%= user.pronouns %></p>
                 <p>Location: <%= user.location %> </p>
-                <img id="profile-pic" src="" alt="">
+                <div id="profile-pic">
+                    <img src="" alt="">
+                </div>
                 <p>Bio: <%= user.bio %> </p>
             </div>
-            <button onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
-            <button class="delete-button">Delete account</button>
+            <div class="buttons">
+                <button onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
+                <form action="/users/<%= user.id %>/delete" method="post">
+                    <!-- <input class="delete-button" type="submit" value="Delete account"> -->
+                    <button class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Delete account</button>
+                </form>
+            </div>
+            <!-- <button class="delete-button">Delete account</button> -->
     </section>
     </main>
 </body>

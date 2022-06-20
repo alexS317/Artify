@@ -16,8 +16,8 @@ function editUser(req, res) {
 
 // Update the user's info
 function updateUser(req, res) {
-    console.log(req.body);
-    userModel.updateUser(req.body)
+    // console.log(req.body);
+    userModel.updateUser(req.body, req.files)
         .then(user => res.render('user', {user}))
         .catch(error => res.sendStatus(500));
 }
@@ -31,9 +31,16 @@ function registerUser(req, res) {
         .catch(error => res.sendStatus(500));
 }
 
+function deleteUser(req, res) {
+    userModel.deleteUser(req.params.id)
+        .then(res.redirect('/logout'))
+        .catch(error => res.sendStatus(500));
+}
+
 module.exports = {
     getUser,
     editUser,
     updateUser,
-    registerUser
+    registerUser,
+    deleteUser
 }

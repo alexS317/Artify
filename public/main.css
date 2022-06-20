@@ -71,7 +71,7 @@ input {
     margin: 10px 15px;
 }
 
-button, input[type=submit] {
+button {
     color: aliceblue;
     background-color: rgb(90, 66, 195);
     font-weight: bold;
@@ -126,7 +126,7 @@ button, input[type=submit]:active {
     text-decoration: underline;
 }
 
-.editing-form {
+/* .editing-form {
     background-color: rgb(163, 132, 241);
     margin: 50px 15%;
     border-radius: 20px;
@@ -134,8 +134,7 @@ button, input[type=submit]:active {
     grid-template-columns: 65% 35%;
     grid-template-rows: 5% 45% 40% 10%;
     height: 75%;
-    /* flex-wrap: wrap;
-    flex-direction: column; */
+
 }
 
 .general-info {
@@ -162,12 +161,17 @@ button, input[type=submit]:active {
     padding: 1%;
     margin: 10px 15px;
     box-shadow: -2px -3px rgb(200, 198, 206), 2px 3px 7px rgb(73, 56, 125);
-    /* box-shadow: none; */
 }
 .cancel-button:hover {
     text-decoration: none;
 }
 
+#profile-pic {
+    background-color: white;
+    width: 180px;
+    height: 180px;
+    border-radius: 90px;
+}
 
 #pronouns {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -182,6 +186,8 @@ button, input[type=submit]:active {
 
 #profilepic {
     display: none;
+    width: 200px;
+    height: 100px;
 }
 
 #pfp {
@@ -213,7 +219,7 @@ button, input[type=submit]:active {
     font-size: 1.1rem;
     padding: 5px;
     margin: 15px;
-}
+} */
 
 
 
