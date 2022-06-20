@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= user.username %></title>
+    <title>Artify - <%= user.username %></title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
 </head>
@@ -27,15 +27,18 @@
             <li>Favorites</li>
             <li>Subscriptions</li>
         </ul>
-        <div class="user">
-            <p>Username: <%= user.username %> </p>
-            <p>Pronouns: <%= user.pronouns %></p>
-            <p>Location: <%= user.location %> </p>
-            <img id="profile-pic" src="" alt="">
-            <p>Bio: <%= user.bio %> </p>
-        </div>
-        <button onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
-        <button class="delete-button">Delete account</button>
+
+        <section class="content">
+            <div class="user">
+                <p>Username: <%= user.username %> </p>
+                <p>Pronouns: <%= user.pronouns %></p>
+                <p>Location: <%= user.location %> </p>
+                <img id="profile-pic" src="" alt="">
+                <p>Bio: <%= user.bio %> </p>
+            </div>
+            <button onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
+            <button class="delete-button">Delete account</button>
+    </section>
     </main>
 </body>
 </html>

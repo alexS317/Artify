@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artify - Artwork</title>
+    <title>Artify - New artwork</title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
 </head>
@@ -18,11 +18,14 @@
         </ul>
         <a href="/logout">Log out</a>
     </header>
-    
-    <main>
-        <img src="" alt="">
-        <h3>username</h3>
-        <p>Description</p>
-    </main>
+
+    <h3>Add a new post</h3>
+    <form action="" method="post" class="editing-form">
+        <label for="picture">Choose a picture</label>
+        <input type="file" name="picture" id="picture" accept=".png">
+        <label for="description" hidden>Description:</label>
+        <textarea name="description" id="description" placeholder="Add a description of your work (optional)"></textarea>
+        <input type="submit" value="Publish">
+    </form>
 </body>
 </html>

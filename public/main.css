@@ -11,6 +11,7 @@ html {
 body {
     margin: 0;
     height: 100%;
+    font-size: 1.25rem;
 }
 
 h1 {
@@ -36,8 +37,8 @@ a {
     font-size: 1.7rem ;
     font-weight: 700;
     text-decoration: none;
-    position: fixed;
-    right: 1%;
+    /* position: fixed; */
+    /* right: 1%; */
 }
 a:hover {
     text-decoration: underline;
@@ -52,7 +53,9 @@ header {
     background-image: linear-gradient(rgb(105, 77, 241), rgb(127, 103, 248));
     display: flex;
     align-items: center;
-    justify-items: left;
+    /* justify-items: left; */
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 0 2%;
 }
 
@@ -93,6 +96,7 @@ button, input[type=submit]:active {
 .main-nav {
     list-style: none;
     display: flex;
+    /* flex-wrap: wrap; */
     color: aliceblue;
     font-size: 1.8rem ;
     font-weight: 700;
@@ -103,6 +107,23 @@ button, input[type=submit]:active {
 .sub-nav {
     list-style: none;
     border: 4px aliceblue solid;
+    border-radius: 5px;
+    border-left: none;
+    padding: 5px;
+    float: left;
+    width: 15%;
+    text-align: left;
+}
+
+.sub-nav li {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.sub-nav li:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .editing-form {
@@ -131,6 +152,7 @@ button, input[type=submit]:active {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: black;
     background-color: aliceblue;
+    position: relative;
     font-weight: bold;
     width: 15%;
     border: none;
@@ -138,10 +160,13 @@ button, input[type=submit]:active {
     letter-spacing: 0.5px;
     border-radius: 10px;
     padding: 1%;
+    margin: 10px 15px;
     box-shadow: -2px -3px rgb(200, 198, 206), 2px 3px 7px rgb(73, 56, 125);
     /* box-shadow: none; */
 }
-
+.cancel-button:hover {
+    text-decoration: none;
+}
 
 
 #pronouns {
@@ -181,7 +206,6 @@ button, input[type=submit]:active {
 #bio {
     grid-row: 3;
     grid-column: span 2;
-    width: 95%;
     border-radius: 10px;
     border-width: 0;
     box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
@@ -189,4 +213,18 @@ button, input[type=submit]:active {
     font-size: 1.1rem;
     padding: 5px;
     margin: 15px;
+}
+
+
+
+@media screen and (max-width: 800px) {
+    header {
+        display: block;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 5px;
+    }
 }

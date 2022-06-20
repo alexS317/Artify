@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit <%= user.username %></title>
+    <title>Artify - Edit <%= user.username %></title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
@@ -50,16 +50,18 @@
             </span>
             Choose a picture
         </label>
-        <input type="file" name="profilepic" id="profilepic" accept=".png, .jpg" placeholder="Select picture">
+        <input type="file" name="profilepic" id="profilepic" accept=".png" placeholder="Select picture">
         <label for="bio" hidden>Bio:</label>
         <!-- <input type="text" name="bio" id="bio" placeholder="Add info about yourself ..." value="<%= user.bio %>"> -->
         <textarea name="bio" id="bio" placeholder="Add info about yourself ..."><%= user.bio %></textarea>
         <div class="buttons">
             <input type="submit" value="Save changes">
-            <button class="cancel-button" onclick="window.location.href = '/users/<%= user.id %>'">Cancel</button>
+            <a class="cancel-button" href="/users/<%= user.id %>">Cancel</a>
         <!-- </div> -->
     </form>
-    </div>
+    <!-- <button class="cancel-button" onclick="window.location.href = '/users/<%= user.id %>'">Cancel</button> -->
+
+    <!-- </div> -->
 
 </body>
 </html>

@@ -107,10 +107,11 @@ button, input[type=submit]:active {
 
 /* Phone */
 @media screen and (max-width: 800px) {
-    .access-form {
-        margin: 0 5%;
-    }
     input {
         width: 70%;
+    }
+
+    .access-form {
+        margin: 0 5%;
     }
 }

@@ -31,6 +31,7 @@ a {
     font-size: 1.8rem ;
     font-weight: 700;
     text-decoration: none;
+    padding: 0 5px;
 }
 a:hover {
     text-decoration: underline;
@@ -39,7 +40,15 @@ a:hover {
 header {
     background-image: linear-gradient(rgb(105, 77, 241), rgb(127, 103, 248));
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 0 2%;
+}
+
+
+@media screen and (max-width: 500px) {
+    header {
+        display: block;
+    }
 }
