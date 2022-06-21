@@ -7,6 +7,7 @@
     <title>Artify - New artwork</title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
+    <link rel="stylesheet" type="text/css" href="/public/editUser.css">
 </head>
 <body>
     <header>
@@ -14,18 +15,21 @@
         <ul class="main-nav">
             <li>Discover</li>
             <li>Forum</li>
-            <li>My Profile</li>
+            <li onclick="window.location.href = './'">My Profile</li>
         </ul>
         <a href="/logout">Log out</a>
     </header>
 
     <h3>Add a new post</h3>
-    <form action="" method="post" class="editing-form">
+    <form action="/users/<%= user.id %>/gallery" method="post" class="editing-form" enctype="multipart/form-data">
         <label for="picture">Choose a picture</label>
-        <input type="file" name="picture" id="picture" accept=".png">
+        <input type="file" name="picture" id="picture" accept="image/*">
         <label for="description" hidden>Description:</label>
         <textarea name="description" id="description" placeholder="Add a description of your work (optional)"></textarea>
-        <input type="submit" value="Publish">
+        <div class="buttons">
+            <a class="cancel-button" href="./">Cancel</a>
+            <input class="save-button" type="submit" value="Publish">
+        </div>
     </form>
 </body>
 </html>

@@ -22,8 +22,8 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 // Import UUID v4 module
-const { v4: uuidv4 } = require('uuid');
-uuidv4();
+// const { v4: uuidv4 } = require('uuid');
+// uuidv4();
 
 const path = require('path');       // Import path module to work with directory and file paths
 const ejs = require('ejs');         // Import module Embedded Javascript Templates (EJS)

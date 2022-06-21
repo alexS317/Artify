@@ -38,7 +38,7 @@ function authenticateJWT(req, res, next) {
                 console.log('forbidden');
                 return res.sendStatus(403);
             }
-            console.log(user);
+            // console.log(user);
             req.user = user;
             next();
         });

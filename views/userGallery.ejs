@@ -7,6 +7,7 @@
     <title>Artify - User Gallery</title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
+    <link rel="stylesheet" type="text/css" href="/public/user.css">
 </head>
 <body>
     <header>
@@ -29,7 +30,9 @@
         </ul>
 
         <section class="content">
-
+            <% for(let i = 0; i < pictures.length; i++) { %>
+                <img onclick="window.location.href = '/gallery/<%= pictures[i].id %>'" id="image" src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
+            <% } %>
         </section>
     </main>
 </body>

@@ -18,19 +18,9 @@ function editUser(req, res) {
 
 // Update the user's info
 function updateUser(req, res) {
-    // if (!req.files) {
-    //     res.sendStatus(400);
-    // } else {
-        // const profilepic = req.files.profilepic;
-        // let filename = uuidv4() + '.png';
-        // profilepic.mv(path.join(__dirname, '../public/uploads/profilepics/') + filename);
-        // console.log(filename);
-        // console.log(req.body);
-
-        userModel.updateUser(req.body)
-            .then(user => res.render('user', {user}))
-            .catch(error => res.sendStatus(500));
-    // }
+    userModel.updateUser(req.body)
+        .then(user => res.render('user', {user}))
+        .catch(error => res.sendStatus(500));
 }
 
 function updateProfilepic(req, res) {

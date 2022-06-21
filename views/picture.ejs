@@ -7,6 +7,7 @@
     <title>Artify - Artwork</title>
 
     <link rel="stylesheet" type="text/css" href="/public/main.css">
+    <link rel="stylesheet" type="text/css" href="/public/user.css">
 </head>
 <body>
     <header>
@@ -14,15 +15,15 @@
         <ul class="main-nav">
             <li>Discover</li>
             <li>Forum</li>
-            <li>My Profile</li>
+            <li onclick="window.location.href = './'">My Profile</li>
         </ul>
         <a href="/logout">Log out</a>
     </header>
     
     <main>
-        <img src="" alt="">
+        <img src="/public/uploads/pictures/<%= picture.picturename %>" alt="picture" id="image">
         <h3>username</h3>
-        <p>Description</p>
+        <p><%= picture.description %></p>
     </main>
 </body>
 </html>
