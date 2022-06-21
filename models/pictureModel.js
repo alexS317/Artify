@@ -29,10 +29,9 @@ let getPicturesForUser = (id) => new Promise((resolve, reject) => {
 
 // Upload a new picture
 let uploadPicture = (id, pictureName, pictureData) => new Promise((resolve, reject) => {
-    let sql = "INSERT INTO ccl_pictures (id, picturename, description) VALUES (" +
-        // `(SELECT id FROM ccl_users WHERE id = ${id}),` + "," +
-        // `(SELECT id FROM ccl_users JOIN ccl_pictures ON ccl_users.id = ccl_pictures.id WHERE ccl_users.id = ${id})` + "," +
+    let sql = "INSERT INTO ccl_pictures (id, username, picturename, description) VALUES (" +
         db.escape(id) + "," +
+        db.escape(pictureData.username) + "," +
         db.escape(pictureName) + "," +
         db.escape(pictureData.description) + ")";
 
@@ -41,7 +40,7 @@ let uploadPicture = (id, pictureName, pictureData) => new Promise((resolve, reje
     db.query(sql, function(err, picture) {
         if (err) reject(err);
         console.log(picture);
-        resolve(pictureData);
+        resolve();
     });
 });
 

@@ -15,14 +15,14 @@
         <ul class="main-nav">
             <li>Discover</li>
             <li>Forum</li>
-            <li onclick="window.location.href = './'">My Profile</li>
+            <li onclick="window.location.href = '../'">My Profile</li>
         </ul>
         <a href="/logout">Log out</a>
     </header>
     
     <main>
         <img src="/public/uploads/pictures/<%= picture.picturename %>" alt="picture" id="image">
-        <h3>username</h3>
+        <h3><%= picture.username %></h3>
         <p><%= picture.description %></p>
     </main>
 </body>

@@ -20,9 +20,9 @@ router.post('/:id/delete', userController.deleteUser);
 // Route to post the profile picture
 router.post('/:id/profilepic', userController.updateProfilepic);
 
-router.get('/:id/gallery', pictureController.getPictures);
-router.get('/:id/upload', pictureController.editPicture);
-router.post('/:id/gallery/:pid', pictureController.uploadPicture);
+router.get('/:id/gallery', pictureController.getPicturesForUser);
+router.get('/:id/addpicture', pictureController.editPicture);
+router.post('/:id/upload', pictureController.uploadPicture);
 router.get('/:id/gallery/:pid', pictureController.getPicture);
 
 

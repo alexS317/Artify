@@ -3,10 +3,11 @@ const path = require('path');
 const pictureModel = require('../models/pictureModel');
 const userModel = require('../models/userModel');
 
-function getPictures(req, res) {
-    pictureModel.getPictures()
-        .then(pictures => res.render('userGallery', {pictures}))
-        .catch(error => res.sendStatus(500));
+function getPicturesForUser(req, res) {
+    // pictureModel.getPictures()
+    pictureModel.getPicturesForUser(req.params.id)
+            .then(pictures => res.render('userGallery', {pictures}))
+            .catch(error => res.sendStatus(500));
 }
 
 function getPicture (req, res) {
@@ -31,19 +32,13 @@ function uploadPicture (req, res) {
         picture.mv(path.join(__dirname, '../public/uploads/pictures/') + pictureName);
 
         pictureModel.uploadPicture(req.params.id, pictureName, req.body)
-            .then(picture => {
-                // userModel.getUser(req.params.id);
-                res.render('picture', {picture})
-            })
-            .catch(error => {
-                console.error(error);
-                res.sendStatus(500)
-            });
+            .then(() => res.redirect('/users/' + req.params.id + '/gallery'))
+            .catch(error => res.send('no'));
     }
 }
 
 module.exports = {
-    getPictures,
+    getPicturesForUser,
     getPicture,
     editPicture,
     uploadPicture

@@ -16,14 +16,14 @@ let getUsers = () => new Promise((resolve, reject) => {
 let getUser = (id) => new Promise((resolve, reject) => {
     db.query(`SELECT * FROM ccl_users WHERE id = ${id}`, function (err, user) {
         if (err) reject(err);
-        // console.log(user);
+        console.log(user);
         resolve(user[0]);
     });
 });
 
 
 // Update a user's data and insert it into database
-let updateUser = (userData, filename) => new Promise(async function (resolve, reject) {
+let updateUser = (userData) => new Promise(async function (resolve, reject) {
     let pw = await bcrypt.hash(userData.password, 10);
     let sql = "UPDATE ccl_users SET " +
     "username = " + db.escape(userData.username) +
@@ -39,7 +39,7 @@ let updateUser = (userData, filename) => new Promise(async function (resolve, re
 
     db.query(sql, function(err, user) {
         if (err) reject(err);
-        // console.log(userData);
+        console.log(userData);
         resolve(userData);
     });
 });

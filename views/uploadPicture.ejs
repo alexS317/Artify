@@ -21,9 +21,11 @@
     </header>
 
     <h3>Add a new post</h3>
-    <form action="/users/<%= user.id %>/gallery" method="post" class="editing-form" enctype="multipart/form-data">
+    <form action="/users/<%= user.id %>/upload" method="post" class="editing-form" enctype="multipart/form-data">
         <label for="picture">Choose a picture</label>
         <input type="file" name="picture" id="picture" accept="image/*">
+        <label for="username" hidden>Username:</label>
+        <input type="text" name="username" id="username" value="<%= user.username %>" readonly>
         <label for="description" hidden>Description:</label>
         <textarea name="description" id="description" placeholder="Add a description of your work (optional)"></textarea>
         <div class="buttons">

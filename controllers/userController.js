@@ -41,7 +41,7 @@ function updateProfilepic(req, res) {
 // Register a user and get redirected to their profile afterwards
 function registerUser(req, res) {
     userModel.registerUser(req.body)
-        .then(res.redirect('/login'))
+        .then(() => res.redirect('/login'))
         .catch(error => res.sendStatus(500));
 }
 
