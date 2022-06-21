@@ -13,10 +13,11 @@ router.get('/:id', userController.getUser)
 router.get('/:id/edit', userController.editUser);
 router.post('/:id', userController.updateUser);
 router.post('/:id/delete', userController.deleteUser);
+router.post('/:id/profilepic', userController.updateProfilepic);
 
 router.get('/:id/gallery', (req, res) => res.render('userGallery'));
-router.get('/:id/artwork', (req, res) => res.render('artwork'));
-router.get('/:id/upload', (req, res) => res.render('uploadArtwork'));
+router.get('/:id/artwork', (req, res) => res.render('picture'));
+router.get('/:id/upload', (req, res) => res.render('uploadPicture'));
 
 
 // router.route('/:id/artwork')

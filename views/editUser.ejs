@@ -21,6 +21,16 @@
         <a href="/logout">Log out</a>
     </header>
 
+    <form action="/users/ <%= user.id %>/profilepic" method="post" enctype="multipart/form-data">
+        <label for="profilepic" id="pfp">
+            <span class="material-symbols-outlined">
+                add_photo_alternate
+            </span>
+            Choose a picture
+        </label>
+        <input type="file" name="profilepic" id="profilepic" accept="image/*">
+        <input class="save-button" type="submit" value="Save picture">
+    </form>
     <!-- <div class="editing-form"> -->
     <form action="/users/<%= user.id %>" method="post" class="editing-form">
 
@@ -44,13 +54,7 @@
             <label for="location" hidden>Location</label>
             <input type="text" name="location" id="location" placeholder="Location" value="<%= user.location %>">
         </div>
-        <label for="profilepic" id="pfp">
-            <span class="material-symbols-outlined">
-                add_photo_alternate
-            </span>
-            Choose a picture
-        </label>
-        <input type="file" name="profilepic" id="profilepic" accept=".png">
+        
         <label for="bio" hidden>Bio:</label>
         <!-- <input type="text" name="bio" id="bio" placeholder="Add info about yourself ..." value="<%= user.bio %>"> -->
         <textarea name="bio" id="bio" placeholder="Add info about yourself ..."><%= user.bio %></textarea>

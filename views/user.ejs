@@ -34,9 +34,9 @@
                 <p>Username: <%= user.username %> </p>
                 <p>Pronouns: <%= user.pronouns %></p>
                 <p>Location: <%= user.location %> </p>
-                <div id="profile-pic">
-                    <img src="" alt="">
-                </div>
+                <!-- <div id="profile-pic"> -->
+                    <img src="/public/uploads/profilepics/<%= user.profilepic %>" alt="profile picture of this user" id="profile-pic">
+                <!-- </div> -->
                 <p>Bio: <%= user.bio %> </p>
             </div>
             <div class="buttons">

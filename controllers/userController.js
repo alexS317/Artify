@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 const userModel = require('../models/userModel');
 
 // Display the page for one user
@@ -16,24 +18,46 @@ function editUser(req, res) {
 
 // Update the user's info
 function updateUser(req, res) {
-    // console.log(req.body);
-    userModel.updateUser(req.body, req.files)
-        .then(user => res.render('user', {user}))
-        .catch(error => res.sendStatus(500));
+    // if (!req.files) {
+    //     res.sendStatus(400);
+    // } else {
+        // const profilepic = req.files.profilepic;
+        // let filename = uuidv4() + '.png';
+        // profilepic.mv(path.join(__dirname, '../public/uploads/profilepics/') + filename);
+        // console.log(filename);
+        // console.log(req.body);
+
+        userModel.updateUser(req.body)
+            .then(user => res.render('user', {user}))
+            .catch(error => res.sendStatus(500));
+    // }
+}
+
+function updateProfilepic(req, res) {
+    if (!req.files) {
+        res.sendStatus(400);
+    } else {
+        const profilepic = req.files.profilepic;
+        let filename = uuidv4() + path.extname(profilepic.name);
+        console.log(filename);
+        profilepic.mv(path.join(__dirname, '../public/uploads/profilepics/') + filename);
+
+        userModel.updateProfilepic(req.params.id, filename)
+            .then(() => res.redirect(`/users/${req.params.id}`))
+            .catch(error => res.sendStatus(500));
+    }
 }
 
 // Register a user and get redirected to their profile afterwards
 function registerUser(req, res) {
     userModel.registerUser(req.body)
         .then(res.redirect('/login'))
-        // .then(res.redirect('/user/:id'))
-        // .then(user => res.render('user', {user}))
         .catch(error => res.sendStatus(500));
 }
 
 function deleteUser(req, res) {
     userModel.deleteUser(req.params.id)
-        .then(res.redirect('/logout'))
+        .then(() => res.redirect('/logout'))
         .catch(error => res.sendStatus(500));
 }
 
@@ -42,5 +66,6 @@ module.exports = {
     editUser,
     updateUser,
     registerUser,
-    deleteUser
+    deleteUser,
+    updateProfilepic
 }
