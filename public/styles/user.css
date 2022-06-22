@@ -1,3 +1,37 @@
+.user {
+    border-radius: 20px;
+    border: 5px solid;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 80% 20%;
+    margin: 20px;
+    padding: 30px;
+    text-align: left;
+}
+.user p {
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 10px;
+}
+
+
+#profile-pic {
+    border-radius: 90px;
+    grid-column: 2;
+    height: 180px;
+    justify-self: right;
+    width: 180px;
+}
+
+#bio {
+    background-color: aliceblue;
+    border-radius: 10px;
+    color: black;
+    grid-column: span 2;
+    grid-row: 2;
+    margin-top: 20px;
+}
+
 .delete-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: black;
@@ -16,14 +50,12 @@
 }
 
 
-
-#profile-pic {
-    /* background-color: white; */
-    width: 180px;
-    height: 180px;
-    border-radius: 90px;
-}
-
 #image {
     width: 900px;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    
 }

@@ -1,29 +1,95 @@
 html {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: aliceblue;
-    text-align: center;
-    letter-spacing: 0.5px;
-    background-image: linear-gradient(rgb(44, 44, 46), rgb(108, 108, 110));
     background-attachment: fixed;
+    background-image: linear-gradient(rgb(44, 44, 46), rgb(108, 108, 110));
+    color: aliceblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    height: 100%;
+    letter-spacing: 0.5px;
+    text-align: center;
 }
 
 body {
+    height: 100%;
     margin: 0;
 }
 
 h1 {
     background-color: rgb(105, 77, 241);
     background-image: linear-gradient(rgb(105, 77, 241), rgb(127, 103, 248));
-    font-style: italic;
     font-size: 64px;
-    padding: 20px 0 30px;
+    font-style: italic;
     margin: 0 0 100px;
+    padding: 20px 0 30px;
+}
+h1:hover {
+    cursor: pointer;
 }
 
 a {
-    font-size: 1.5rem ;
-    font-weight: 700;
+    color: aliceblue;
+    font-weight: bold;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    font-weight: 600;
+    margin: 0;
+}
+
+form {
+    margin: 4% 6%;
+}
+
+input {
+    border-radius: 10px;
+    border-width: 0;
+    box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    margin: 2%;
+    padding: 1.5%;
+    width: 65%;
+}
+
+input[type=submit] {
+    background-color: rgb(90, 66, 195);
+    box-shadow: -3px -4px rgb(178, 160, 251), 2px 3px 7px rgb(73, 56, 125);
+    color: aliceblue;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 2% 0;
+    width: 40%;
+}
+input[type=submit]:hover {
+    cursor: pointer;
+}
+input[type=submit]:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+
+.access-form {
+    background-color: rgb(163, 132, 241);
+    border-radius: 20px;
+    box-shadow: 5px 10px 15px rgb(55, 55, 55);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 26%;
+    padding-bottom: 4%;
+}
+
+.loginLinks {
     color: rgb(64, 67, 67);
+    font-size: 1.25rem ;
+    font-weight: 700;
     padding: 2.5%;
     text-decoration: none;
     width: 50%;
@@ -32,69 +98,18 @@ a {
     background-color: rgb(207, 185, 251);
     border-radius: 20px 20px 0 0;
 }
-a:hover {
+.loginLinks:hover {
     background-color: rgb(211, 190, 253);
     border-radius: 20px 20px 0 0;
 }
 
-p {
-    margin-top: 0;
-    font-weight: 600;
-}
-
-form {
-    margin: 6%;
-}
-
-input {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.3rem;
-    letter-spacing: 0.5px;
-    border-radius: 10px;
-    border-width: 0;
-    box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
-    width: 45%;
-    padding: 1.5%;
-    margin: 2%;
-}
-
-input[type=submit] {
-    color: aliceblue;
-    background-color: rgb(90, 66, 195);
-    font-weight: bold;
-    font-size: 1.5rem;
-    padding: 2% 8%;
-    box-shadow: -3px -4px rgb(178, 160, 251), 2px 3px 7px rgb(73, 56, 125);
-}
-input[type=submit]:hover {
-    cursor: pointer;
-}
-input[type=submit]:active {
-    transform: translateY(2px);
-    box-shadow: none;
-}
-
-
-.access-form {
-    background-color: rgb(163, 132, 241);
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    padding-bottom: 4%;
-    margin: 0 26%;
-    border-radius: 20px;
-    /* box-shadow: 5px 10px 15px rgb(117, 117, 118); */
-    box-shadow: 5px 10px 15px rgb(55, 55, 55);
-}
-
 .links {
-    display: flex;
-    justify-content: space-around;
     align-content: center;
     background-color: rgb(232, 222, 255);
-    width: 100%;
     border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
 
@@ -109,6 +124,10 @@ input[type=submit]:active {
 @media screen and (max-width: 800px) {
     input {
         width: 70%;
+    }
+
+    input[type=submit] {
+        width: 55%;
     }
 
     .access-form {

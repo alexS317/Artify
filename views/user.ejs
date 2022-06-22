@@ -15,36 +15,36 @@
         <ul class="main-nav">
             <li>Discover</li>
             <li>Forum</li>
-            <li>My Profile</li>
+            <li class="selected">My Profile</li>
         </ul>
-        <a href="/logout">Log out</a>
+        <a class="logout" href="/logout">Log out</a>
     </header>
 
     <main>
         <ul class="sub-nav">
-            <li>About</li>
+            <li class="selected">About</li>
             <li onclick="window.location.href = '/users/<%= user.id%>/gallery'">Gallery</li>
             <li>Favorites</li>
             <li>Subscriptions</li>
         </ul>
 
-        <section class="content">
-            <div class="user">
+        <div class="user">
+            <div class="general-info">
                 <p>Username: <%= user.username %> </p>
                 <p>Pronouns: <%= user.pronouns %></p>
                 <p>Location: <%= user.location %> </p>
-                <img id="profile-pic" src="/public/uploads/profilepics/<%= user.profilepic %>" alt="profile picture of this user">
-                <p>Bio: <%= user.bio %> </p>
             </div>
+            <img id="profile-pic" src="/public/uploads/profilepics/<%= user.profilepic %>" alt="profile picture of this user">
+            <p id="bio">Bio: <%= user.bio %> </p>
+        </div>
 
-            <div class="buttons">
-                <button onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
-                <form action="/users/<%= user.id %>/delete" method="post">
-                    <button class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Delete account</button>
-                </form>
-                <button onclick="window.location.href = '/users/<%= user.id %>/upload'">Add creation</button>
-            </div>
-        </section>
+        <div class="buttons">
+            <button onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
+            <form action="/users/<%= user.id %>/delete" method="post">
+                <button class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Delete account</button>
+            </form>
+            <button onclick="window.location.href = '/users/<%= user.id %>/upload'">Add creation</button>
+        </div>
     </main>
 </body>
 </html>

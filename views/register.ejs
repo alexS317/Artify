@@ -13,13 +13,14 @@
     
     <div class="access-form">
         <div class="links">
-            <a href="/login">Log in</a>
-            <a href="/register" id="selected">Sign up</a>
+            <a class="loginLinks" href="/login">Log in</a>
+            <a class="loginLinks" href="/register" id="selected">Sign up</a>
         </div>
+
         <form action="/register" method="post">
             <input type="text" name="username" id="username" minlength="3" maxlength="30" placeholder="Username" required>
             <input type="email" name="email" id="email" placeholder="Email" required>
-            <input type="password" name="password" id="password" minlength="3" maxlength="30" placeholder="Password" required>
+            <input type="password" name="password" id="password" minlength="3" placeholder="Password" required>
             <input type="submit" value="Register"><br>
         </form>
         <p>After signing up, log in with your credentials to activate your account.</p>

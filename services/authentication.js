@@ -16,7 +16,7 @@ async function authenticateUser({username, password}, users, res) {       // {us
     });
     // If the credentials are correct, create a cookie and redirect the user to their page
     if (user && await checkPassword(password, user.password)) {
-        const accessToken = jwt.sign({id: user.id, name: user.username}, AUTH_TOKEN_SECRET);
+        const accessToken = jwt.sign({id: user.id, username: user.username}, AUTH_TOKEN_SECRET);
         res.cookie('accessToken', accessToken);                     // Set cookie name and value
         res.redirect('/users/' + user.id);
         console.log('User ' + user.username + ' logged in.');
