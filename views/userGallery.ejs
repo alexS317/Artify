@@ -7,7 +7,7 @@
     <title>Artify - User Gallery</title>
 
     <link rel="stylesheet" type="text/css" href="/public/styles/main.css">
-    <link rel="stylesheet" type="text/css" href="/public/styles/user.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/display.css">
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
             <li>Forum</li>
             <li>My Profile</li>
         </ul>
-        <a href="/logout">Log out</a>
+        <a class="logout" href="/logout">Log out</a>
     </header>
 
     <main>
@@ -28,11 +28,11 @@
             <li>Subscriptions</li>
         </ul>
 
-        <section class="content">
+        <div class="gallery">
             <% for(let i = 0; i < pictures.length; i++) { %>
-                <img onclick="window.location.href = '/users/<%= pictures[i].id %>/gallery/<%= pictures[i].pid %>'" id="image" src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
+                <img class="image" onclick="window.location.href = '/users/<%= pictures[i].id %>/gallery/<%= pictures[i].pid %>'" src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
             <% } %>
-        </section>
+            </div>
     </main>
 </body>
 </html>
