@@ -6,8 +6,6 @@ const port = 3000;
 const fileUpload = require('express-fileupload');
 app.use(fileUpload({createParentPath: true}));
 
-const fs = require('fs');
-
 // Import cors module to make requests on other domains
 const cors = require('cors');
 app.use(cors());
@@ -21,9 +19,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-// Import UUID v4 module
-// const { v4: uuidv4 } = require('uuid');
-// uuidv4();
 
 const path = require('path');       // Import path module to work with directory and file paths
 const ejs = require('ejs');         // Import module Embedded Javascript Templates (EJS)
@@ -35,14 +30,13 @@ app.set('view engine', 'ejs');                      // Set name 'view engine' an
 // Import files from router directory
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-// const { appendFileSync } = require('fs');
 
 // Tell the app to use the created routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 
-// Make public server accessible to clients to serve static files
+// Make public folder accessible to clients to serve static files
 app.use('/public', express.static('public'));
 
 

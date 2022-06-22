@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artify - New artwork</title>
 
-    <link rel="stylesheet" type="text/css" href="/public/main.css">
-    <link rel="stylesheet" type="text/css" href="/public/editUser.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/editUser.css">
 </head>
 <body>
     <header>
@@ -20,14 +20,17 @@
         <a href="/logout">Log out</a>
     </header>
 
-    <h3>Add a new post</h3>
+    
     <form action="/users/<%= user.id %>/upload" method="post" class="editing-form" enctype="multipart/form-data">
+        <h3>Add a new post</h3>
+        
         <label for="picture">Choose a picture</label>
         <input type="file" name="picture" id="picture" accept="image/*">
         <label for="username" hidden>Username:</label>
         <input type="text" name="username" id="username" value="<%= user.username %>" readonly>
         <label for="description" hidden>Description:</label>
         <textarea name="description" id="description" placeholder="Add a description of your work (optional)"></textarea>
+       
         <div class="buttons">
             <a class="cancel-button" href="./">Cancel</a>
             <input class="save-button" type="submit" value="Publish">

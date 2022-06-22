@@ -12,12 +12,9 @@ async function checkPassword(password, hash) {
 // Authenticate user when logging in, check if username and password are correct
 async function authenticateUser({username, password}, users, res) {       // {username, password} from req.body
     const user = users.find(u => {                                        // find the first one that fulfills criteria
-        // console.log(u.username);
-        return u.username === username; //&& u.password === password;
+        return u.username === username;
     });
-    // console.log(user.username);
-    // console.log(password);
-    // console.log(user.password);
+    // If the credentials are correct, create a cookie and redirect the user to their page
     if (user && await checkPassword(password, user.password)) {
         const accessToken = jwt.sign({id: user.id, name: user.username}, AUTH_TOKEN_SECRET);
         res.cookie('accessToken', accessToken);                     // Set cookie name and value
@@ -25,20 +22,19 @@ async function authenticateUser({username, password}, users, res) {       // {us
         console.log('User ' + user.username + ' logged in.');
     } else {
         res.send('Username or password are incorrect.');
-        // res.send('user is incorrect');
     }
 }
 
 // Check if user is logged in
 function authenticateJWT(req, res, next) {
     const token = req.cookies['accessToken'];
+    // If the token is correct, let the user access
     if(token) {
         jwt.verify(token, AUTH_TOKEN_SECRET, (err, user) => {
             if(err) {
                 console.log('forbidden');
                 return res.sendStatus(403);
             }
-            // console.log(user);
             req.user = user;
             next();
         });

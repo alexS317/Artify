@@ -1,8 +1,7 @@
-const bcrypt = require('bcrypt');
-const { v4: uuidv4 } = require('uuid');
-const db = require('../services/database').config;
+const bcrypt = require('bcrypt');                       // Import bcrypt module to encrypt passwords
+const db = require('../services/database').config;      // Import database configuration
 
-// Select all users
+// Select all users from the database
 let getUsers = () => new Promise((resolve, reject) => {
     db.query("SELECT * FROM ccl_users", function (err, users) {
         if (err) reject(err);
@@ -12,11 +11,11 @@ let getUsers = () => new Promise((resolve, reject) => {
 });
 
 
-// Select a specific user
+// Select a specific user based on their id
 let getUser = (id) => new Promise((resolve, reject) => {
     db.query(`SELECT * FROM ccl_users WHERE id = ${id}`, function (err, user) {
         if (err) reject(err);
-        console.log(user);
+        // console.log(user);
         resolve(user[0]);
     });
 });
@@ -24,7 +23,7 @@ let getUser = (id) => new Promise((resolve, reject) => {
 
 // Update a user's data and insert it into database
 let updateUser = (userData) => new Promise(async function (resolve, reject) {
-    let pw = await bcrypt.hash(userData.password, 10);
+    let pw = await bcrypt.hash(userData.password, 10);  // Encrypt password
     let sql = "UPDATE ccl_users SET " +
     "username = " + db.escape(userData.username) +
     ", email = " + db.escape(userData.email) +
@@ -39,11 +38,12 @@ let updateUser = (userData) => new Promise(async function (resolve, reject) {
 
     db.query(sql, function(err, user) {
         if (err) reject(err);
-        console.log(userData);
+        // console.log(userData);
         resolve(userData);
     });
 });
 
+// Update a user's profile picture and insert the picture name into the database
 let updateProfilepic = (id, filename) => new Promise((resolve, reject) => {
     let sql = `UPDATE ccl_users SET profilepic = ${db.escape(filename)} WHERE id = ${id}`;
     console.log(sql);
@@ -66,12 +66,12 @@ let registerUser = (userData) => new Promise(async function (resolve, reject) {
 
     db.query(sql, function (err, user) {
         if (err) reject(err);
-        // console.log(user);
+        // console.log(userData);
         resolve(userData);
     });
 });
 
-
+// Delete a user based on their id
 let deleteUser = (id) => new Promise((resolve, reject) => {
     db.query(`DELETE FROM ccl_users WHERE id = ${id}`, function(err, user) {
         if (err) reject(err);
@@ -85,7 +85,7 @@ module.exports = {
     getUsers,
     getUser,
     updateUser,
+    updateProfilepic,
     registerUser,
-    deleteUser,
-    updateProfilepic
+    deleteUser
 }

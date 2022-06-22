@@ -1,4 +1,4 @@
-const db = require('../services/database').config;
+const db = require('../services/database').config;      // Import database configuration
 
 // Select all pictures
 let getPictures = () => new Promise((resolve, reject) => {
@@ -9,11 +9,11 @@ let getPictures = () => new Promise((resolve, reject) => {
     });
 });
 
-// Select a specific picture
+// Select a specific picture based on picture id (pid)
 let getPicture = (pid) => new Promise((resolve, reject) => {
     db.query(`SELECT * FROM ccl_pictures WHERE pid = ${pid}`, function (err, picture) {
         if (err) reject(err);
-        console.log(picture);
+        // console.log(picture);
         resolve(picture[0]);
     });
 });
@@ -39,7 +39,7 @@ let uploadPicture = (id, pictureName, pictureData) => new Promise((resolve, reje
 
     db.query(sql, function(err, picture) {
         if (err) reject(err);
-        console.log(picture);
+        console.log(id, pictureName, pictureData);
         resolve();
     });
 });
