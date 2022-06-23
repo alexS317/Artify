@@ -50,7 +50,14 @@
             <form action="/users/<%= user.id %>/delete" method="post">
                 <button class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Delete account</button>
             </form>
-            
+        </div>
+
+        <div class="popup">
+            <p>Do you really want to delete your account?</p>
+            <form action="/users/<%= user.id %>/delete" method="post">
+                <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Yes</button>
+            </form>
+            <button id="cancel" class="cancel-button">No</button>
         </div>
     </main>
 </body>

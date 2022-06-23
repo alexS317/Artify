@@ -12,6 +12,7 @@ input {
 .editing-form {
     background-color: rgb(163, 132, 241);
     border-radius: 20px;
+    box-shadow: 5px 10px 15px rgb(55, 55, 55);
     display: grid;
     grid-auto-rows: auto;
     grid-template-columns: 50%;
@@ -65,27 +66,33 @@ textarea {
 
 .save-button {
     background-color: rgb(90, 66, 195);
-    box-shadow: -2px -3px rgb(178, 160, 251), 2px 3px 7px rgb(58, 54, 71);
     color: aliceblue;
+}
+.save-button:hover {
+    background-color: rgb(64, 45, 148);
 }
 
 .cancel-button {
     background-color: aliceblue;
-    border-radius: 10px;
+    border-radius: 25px;
     border: none;
-    box-shadow: -2px -3px rgb(200, 198, 206), 2px 3px 7px rgb(58, 54, 71);
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
     letter-spacing: 0.5px;
     margin: 10px 15px;
-    padding: 5px;
+    padding: 6px;
     text-decoration: none;
-    width: 220px;
+    width: 225px;
 }
 .cancel-button:hover {
     text-decoration: none;
+    color: aliceblue;
+    background-color: black;
+}
+.cancel-button:active {
+    transform: translateY(2px);
 }
 
 

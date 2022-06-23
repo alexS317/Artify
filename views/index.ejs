@@ -17,6 +17,15 @@
         </div>
     </header>
 
+    <div class="gallery">
+        <% for(let i = 0; i < pictures.length; i++) { %>
+            <div class="image">
+                <img src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
+            </div>
+        <% } %>
+        <div class="gradient"></div>
+    </div>
+
     <p>Want to see more like this? <a href="/register">Join today!</a></p>
 </body>
 </html>

@@ -2,12 +2,15 @@ const express = require('express');     // Import Express
 const router = express.Router();        // Create new express router object to handle requests
 const userModel = require('../models/userModel');
 const userController = require('../controllers/userController');
+const pictureModel = require('../models/pictureModel');
 const authenticationService = require('../services/authentication');
 
 
 // Route to get the index page from the server
 router.get('/', (req, res) => {
-    res.render('index');    // Render page
+    pictureModel.getPictures()
+        .then(pictures => res.render('index', {pictures}))    // Render page
+        .catch(error => res.redirect('/error'));
 });
 
 router.get('/error', (req, res) => {

@@ -50,22 +50,52 @@ form {
 
 
 .upload-button {
-    width: 170px;
     background-color: rgb(90, 66, 195);
-    box-shadow: -2px -3px rgb(178, 160, 251), 2px 3px 7px rgb(73, 56, 125);
     color: aliceblue;
+    width: 170px;
 }
 
 .edit-button {
     background-color: rgb(90, 66, 195);
-    box-shadow: -2px -3px rgb(178, 160, 251), 2px 3px 7px rgb(73, 56, 125);
     color: aliceblue;
 }
 
 .edit-button-2 {
     background-color: rgb(130, 109, 222);
-    box-shadow: -2px -3px rgb(191, 174, 255), 2px 3px 7px rgb(73, 56, 125);
     color: aliceblue;
+}
+
+.upload-button:hover, .edit-button:hover {
+    background-color: rgb(64, 45, 148);
+}
+.edit-button-2:hover {
+    background-color: rgb(106, 81, 219);
+}
+
+.popup {
+    background-color: aliceblue;
+    border-radius: 20px;
+    box-shadow: 5px 10px 15px rgb(55, 55, 55);
+    color: black;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    width: 400px;
+    display: none;
+}
+#delete {
+    background-color: rgb(215, 54, 54);
+    color: white;
+}
+#delete:hover {
+    background-color: rgb(175, 39, 39);
+}
+#cancel {
+    background-color: rgb(184, 184, 189);
+    color: white;
+}
+#cancel:hover {
+    background-color: rgb(158, 158, 160);
 }
 
 

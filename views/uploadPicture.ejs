@@ -31,14 +31,12 @@
             </span>
             <input type="file" name="picture" id="picture" accept="image/*" required>
             Choose a picture</label>
-        <!-- <input type="file" name="picture" id="picture" accept="image/*"> -->
         <label for="username" hidden>Username:</label>
         <input type="text" name="username" id="username" value="<%= user.username %>" readonly hidden>
         <label for="description" hidden>Description:</label>
         <textarea name="description" id="description" placeholder="Add a description of your work (optional)"></textarea>
        
         <div class="buttons">
-            <!-- <input class="save-button" type="submit" value="Publish"> -->
             <button class="save-button" onclick="window.location.href = '/users/<%= user.id %>/upload'">Publish</button>
             <a class="cancel-button" href="./">Cancel</a>
         </div>
