@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" type="text/css" href="/public/styles/main.css">
     <link rel="stylesheet" type="text/css" href="/public/styles/edit.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0" />
 </head>
 <body>
     <header>
@@ -22,18 +21,6 @@
     </header>
 
 
-    <!-- <form action="/users/<%= user.id %>/profilepic" method="post" enctype="multipart/form-data">
-        <label for="profilepic" id="pfp">
-            <span class="material-symbols-outlined">
-                add_photo_alternate
-            </span>
-            Choose a picture
-        </label>
-        <input type="file" name="profilepic" id="profilepic" accept="image/*">
-        <input class="save-button" type="submit" value="Save picture">
-    </form> -->
-
-
     <form action="/users/<%= user.id %>" method="post" class="editing-form">
 
         <h3>Edit profile:</h3>
@@ -44,8 +31,6 @@
             <input type="text" name="username" id="username" minlength="3" maxlength="30" placeholder="Username" value="<%= user.username %>" required>
             <label for="email" hidden>Email:</label>
             <input type="email" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
-            <label for="password" hidden>Password:</label>
-            <input type="password" name="password" id="password" minlength="3" placeholder="Password" value="<%= user.password %>" required>
             <label for="pronouns" hidden>Pronouns:</label>
             <select name="pronouns" id="pronouns">
                 <option value=""></option>
@@ -61,6 +46,7 @@
         <textarea name="bio" id="bio" placeholder="Add info about yourself ..."><%= user.bio %></textarea>
         <div class="buttons">
             <button class="save-button" onclick="window.location.href = '/users/<%= user.id %>';">Save changes</button>
+            <!-- <input type="submit" value="Save changes"> -->
             <a class="cancel-button" href="/users/<%= user.id %>">Cancel</a>
         </div>
         

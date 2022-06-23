@@ -35,14 +35,18 @@
                 <p><%= user.pronouns %></p>
                 <p><%= user.location %></p>
             </div>
-            <img id="profile-pic" src="/public/uploads/profilepics/<%= user.profilepic %>" alt="profile picture of this user">
-            <p id="bio"><%= user.bio %></p>
+            <% if(user.profilepic === null) { %>
+                <img class="profile-pic" src="/public/Assets/blank-profile-picture.png" alt="empty profile picture">
+            <% } else { %>
+                <img class="profile-pic" src="/public/uploads/profilepics/<%= user.profilepic %>" alt="profile picture of this user">
+            <% } %>
+                <p id="bio"><%= user.bio %></p>
         </div>
 
         <div class="buttons">
-            <button class="edit-button" onclick="window.location.href = '/users/<%= user.id %>/edit';">Edit profile</button>
-            <button class="edit-button-2">Edit picture</button>
-            <button class="edit-button-2">Change password</button>
+            <button class="edit-button" onclick="window.location.href = '/users/<%= user.id %>/edit'">Edit profile</button>
+            <button class="edit-button-2" onclick="window.location.href = '/users/<%= user.id %>/profilepic'">Edit picture</button>
+            <button class="edit-button-2" onclick="window.location.href = '/users/<%= user.id %>/password'">Change password</button>
             <form action="/users/<%= user.id %>/delete" method="post">
                 <button class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Delete account</button>
             </form>

@@ -22,9 +22,15 @@ router.get('/:id/edit', userController.editUser);
 // Route to post delete request
 router.post('/:id/delete', userController.deleteUser);
 
-// Route to post the profile picture
-router.post('/:id/profilepic', userController.updateProfilepic);
+// Route to get to the edit profilepic page and post the profile picture
+router.route('/:id/profilepic')
+    .get(userController.editProfilepic)
+    .post(userController.updateProfilepic);
 
+// Route to get to the change password page and post it to the database
+router.route('/:id/password')
+    .get(userController.editPassword)
+    .post(userController.changePassword);
 
 // Route to get to a user's gallery page
 router.get('/:id/gallery', pictureController.getPicturesForUser);

@@ -21,7 +21,8 @@ async function authenticateUser({username, password}, users, res) {       // {us
         res.redirect('/users/' + user.id);
         console.log('User ' + user.username + ' logged in.');
     } else {
-        res.send('Username or password are incorrect.');
+        // res.send('Username or password are incorrect.');
+        res.redirect('/error');
     }
 }
 
@@ -33,14 +34,16 @@ function authenticateJWT(req, res, next) {
         jwt.verify(token, AUTH_TOKEN_SECRET, (err, user) => {
             if(err) {
                 console.log('forbidden');
-                return res.sendStatus(403);
+                // return res.sendStatus(403);
+                return res.redirect('/error');
             }
             req.user = user;
             next();
         });
     } else {
         console.log('unauthorized');
-        res.sendStatus(401);
+        // res.sendStatus(401);
+        res.redirect('/error');
     }
 }
 

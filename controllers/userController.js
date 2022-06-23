@@ -3,11 +3,11 @@ const path = require('path');                   // Import path module
 const userModel = require('../models/userModel');
 
 // Display the page for one user
-function getUser(req, res) {
+function getUser(req, res, next) {
     userModel.getUser(req.params.id)
         // Render the user page and get user data as object to insert in page
         .then(user => res.render('user', {user}))
-        .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
 }
 
 // Display the user edit page
@@ -15,21 +15,34 @@ function editUser(req, res) {
     userModel.getUser(req.params.id)
         // Render the user edit page and get user data as object to insert in page
         .then(user => res.render('editUser', {user}))
-        .catch(error => res.sendStatus(500));
+        // .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
 }
 
 // Update the user's info and display their page with the new info
 function updateUser(req, res) {
     // Send data that was put in form (body) to updateUser function
     userModel.updateUser(req.body)
-        // Render the user page and get user data as object to insert in page
-        .then(user => res.render('user', {user}))
-        .catch(error => res.sendStatus(500));
+        // Redirect to the user page
+        .then(() => res.redirect(`/users/${req.params.id}`))
+        // .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
 }
 
+
+// Display the edit profilepic page
+function editProfilepic(req, res) {
+    userModel.getUser(req.params.id)
+        .then(user => res.render('editProfilepic', {user}))
+        // .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
+}
+
+// Update the profilepic and get back to the user page
 function updateProfilepic(req, res) {
     if (!req.files) {
-        res.sendStatus(400);    // Send error if no file was uploaded
+        // res.sendStatus(400);    // Send error if no file was uploaded
+        res.redirect('/error');
     } else {
         // Request 'profilepic' file from form
         const profilepic = req.files.profilepic;
@@ -42,8 +55,26 @@ function updateProfilepic(req, res) {
         userModel.updateProfilepic(req.params.id, filename)
             // Redirect to the user's page
             .then(() => res.redirect(`/users/${req.params.id}`))
-            .catch(error => res.sendStatus(500));
+            // .catch(error => res.sendStatus(500));
+            .catch(error => res.redirect('/error'));
     }
+}
+
+
+// Display the edit password page
+function editPassword(req, res) {
+    userModel.getUser(req.params.id)
+        .then(user => res.render('changePassword', {user}))
+        // .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
+}
+
+// Update the password and get back to the user page
+function changePassword(req, res) {
+    userModel.changePassword(req.body)
+        .then(() => res.redirect(`/users/${req.params.id}`))
+        // .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
 }
 
 // Register a user
@@ -52,7 +83,8 @@ function registerUser(req, res) {
     userModel.registerUser(req.body)
         // Get redirected to the login page
         .then(() => res.redirect('/login'))
-        .catch(error => res.sendStatus(500));
+        // .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
 }
 
 // Delete a user
@@ -60,14 +92,18 @@ function deleteUser(req, res) {
     userModel.deleteUser(req.params.id)
         // Automatically log out when deleted
         .then(() => res.redirect('/logout'))
-        .catch(error => res.sendStatus(500));
+        // .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
 }
 
 module.exports = {
     getUser,
     editUser,
     updateUser,
+    editProfilepic,
     updateProfilepic,
+    editPassword,
+    changePassword,
     registerUser,
     deleteUser
 }

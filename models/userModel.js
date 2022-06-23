@@ -4,9 +4,12 @@ const db = require('../services/database').config;      // Import database confi
 // Select all users from the database
 let getUsers = () => new Promise((resolve, reject) => {
     db.query("SELECT * FROM ccl_users", function (err, users) {
-        if (err) reject(err);
-        // console.log(users);
-        resolve(users);
+        if (err) {
+            reject(err);
+        } else {
+            // console.log(users);
+            resolve(users);
+        }
     });
 });
 
@@ -14,42 +17,60 @@ let getUsers = () => new Promise((resolve, reject) => {
 // Select a specific user based on their id
 let getUser = (id) => new Promise((resolve, reject) => {
     db.query(`SELECT * FROM ccl_users WHERE id = ${id}`, function (err, user) {
-        if (err) reject(err);
-        // console.log(user);
-        resolve(user[0]);
+        if (err) {
+            reject(err);
+        } else {
+            // console.log(user[0]);
+            resolve(user[0]);
+        }
     });
 });
 
 
 // Update a user's data and insert it into database
-let updateUser = (userData) => new Promise(async function (resolve, reject) {
-    let pw = await bcrypt.hash(userData.password, 10);  // Encrypt password
+let updateUser = (userData) => new Promise(function(resolve, reject) {
     let sql = "UPDATE ccl_users SET " +
     "username = " + db.escape(userData.username) +
     ", email = " + db.escape(userData.email) +
-    ", password = " + db.escape(pw) +
     ", pronouns = " + db.escape(userData.pronouns) +
     ", location = " + db.escape(userData.location) +
     ", bio = " + db.escape(userData.bio) +
-    // ", profilepic = " + db.escape(filename) +
     " WHERE id = " + parseInt(userData.id);
 
-    console.log(sql);
+    // console.log(sql);
 
-    db.query(sql, function(err, user) {
-        if (err) reject(err);
-        // console.log(userData);
-        resolve(userData);
+    db.query(sql, function(err, userData) {
+        if (err) {
+            reject(err);
+        } else {
+            // console.log(userData);
+            resolve(userData);
+        }
     });
 });
+
 
 // Update a user's profile picture and insert the picture name into the database
 let updateProfilepic = (id, filename) => new Promise((resolve, reject) => {
     let sql = `UPDATE ccl_users SET profilepic = ${db.escape(filename)} WHERE id = ${id}`;
-    console.log(sql);
+    // console.log(sql);
+
     db.query(sql, function (err) {
         if (err) reject(err);
-        resolve();
+        else resolve();
+    });
+});
+
+
+// Change only the user password
+let changePassword = (userData) => new Promise(async function (resolve, reject) {
+    let pw = await bcrypt.hash(userData.password, 10);      // Encrypt password
+    let sql = `UPDATE ccl_users SET password = ${db.escape(pw)} WHERE id = ${parseInt(userData.id)}`;
+    // console.log(sql);
+
+    db.query(sql, function(err, userData) {
+        if (err) reject(err);
+        else resolve(userData);
     });
 });
 
@@ -62,21 +83,23 @@ let registerUser = (userData) => new Promise(async function (resolve, reject) {
         db.escape(userData.email) + "," +
         db.escape(pw) + ")";
 
-    console.log(sql);
+    // console.log(sql);
 
     db.query(sql, function (err, user) {
         if (err) reject(err);
-        // console.log(userData);
-        resolve(userData);
+        else resolve(userData);
     });
 });
 
 // Delete a user based on their id
 let deleteUser = (id) => new Promise((resolve, reject) => {
     db.query(`DELETE FROM ccl_users WHERE id = ${id}`, function(err, user) {
-        if (err) reject(err);
-        console.log(`User is being deleted.`);
-        resolve(id);
+        if (err) {
+            reject(err);
+        } else {
+            console.log(`User is being deleted.`);
+            resolve(id);
+        }
     });
 });
 
@@ -86,6 +109,7 @@ module.exports = {
     getUser,
     updateUser,
     updateProfilepic,
+    changePassword,
     registerUser,
     deleteUser
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artify - Change profile picture</title>
+
+    <link rel="stylesheet" type="text/css" href="/public/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/edit.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,1,0" />
+</head>
+<body>
+    <header>
+        <h1>Artify</h1>
+        <ul class="main-nav">
+            <li>Discover</li>
+            <li>Forum</li>
+            <li>My Profile</li>
+        </ul>
+        <a class="logout" href="/logout">Log out</a>
+    </header>
+
+
+    <form action="/users/<%= user.id %>/profilepic" method="post" enctype="multipart/form-data" class="editing-form">
+        <label for="profilepic" id="pfp">
+            <span class="material-symbols-outlined">
+                add_photo_alternate
+            </span>
+            <input type="file" name="profilepic" id="profilepic" accept="image/*" required>
+            Choose a profile picture
+        </label>
+        <div class="buttons">
+            <!-- <input class="save-button" type="submit" value="Save picture"> -->
+            <button class="save-button" onclick="window.location.href = '/users/<%= user.id %>/profilepic';">Save picture</button>
+            <a class="cancel-button" href="/users/<%= user.id %>">Cancel</a>
+        </div>
+    </form>
+</body>
+</html>

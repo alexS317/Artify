@@ -3,27 +3,36 @@ const db = require('../services/database').config;      // Import database confi
 // Select all pictures
 let getPictures = () => new Promise((resolve, reject) => {
     db.query("SELECT * FROM ccl_pictures", function (err, pictures) {
-        if (err) reject(err);
-        // console.log(pictures);
-        resolve(pictures);
+        if (err) {
+            reject(err);
+        } else {
+            // console.log(pictures);
+            resolve(pictures);
+        }
     });
 });
 
 // Select a specific picture based on picture id (pid)
 let getPicture = (pid) => new Promise((resolve, reject) => {
     db.query(`SELECT * FROM ccl_pictures WHERE pid = ${pid}`, function (err, picture) {
-        if (err) reject(err);
-        // console.log(picture);
-        resolve(picture[0]);
+        if (err) {
+            reject(err);
+        } else {
+            // console.log(picture);
+            resolve(picture[0]);
+        }
     });
 });
 
 // Select all pictures from a specific user
 let getPicturesForUser = (id) => new Promise((resolve, reject) => {
     db.query(`SELECT * FROM ccl_pictures WHERE id = ${id}`, function (err, pictures) {
-        if (err) reject(err);
-        // console.log(pictures);
-        resolve(pictures);
+        if (err) {
+            reject(err);
+        } else {
+            // console.log(pictures);
+            resolve(pictures);
+        }
     });
 });
 
@@ -39,8 +48,7 @@ let uploadPicture = (id, pictureName, pictureData) => new Promise((resolve, reje
 
     db.query(sql, function(err, picture) {
         if (err) reject(err);
-        console.log(id, pictureName, pictureData);
-        resolve();
+        else resolve();
     });
 });
 

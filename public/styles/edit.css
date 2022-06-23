@@ -91,11 +91,11 @@ textarea {
 
 #picture {
     background-color: white;
-    color: black;
-    grid-column: span 2;
     box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
-    display: none;
     box-shadow: none;
+    color: black;
+    display: none;
+    grid-column: span 2;
 }
 
 #pic {
@@ -112,12 +112,13 @@ textarea {
     margin: 10px 15px;
     padding: 8px;
 }
+#pic:hover {
+    cursor: pointer;
+}
 
 
 #profilepic {
-    /* display: none; */
-    height: 100px;
-    width: 200px;
+    display: none;
 }
 
 #pfp {
@@ -127,13 +128,12 @@ textarea {
     color: black;
     display: flex;
     flex-direction: column;
-    grid-column: 2;
-    grid-row: 2;
-    height: 150px;
+    grid-column: span 2;
+    height: 180px;
     justify-content: center;
-    justify-self: right;
-    margin: 10px 15px;
-    width: 150px;
+    justify-self: center;
+    margin: 20px;
+    width: 180px;
 }
 #pfp:hover {
     cursor: pointer;
