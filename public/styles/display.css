@@ -72,16 +72,19 @@ form {
     background-color: rgb(106, 81, 219);
 }
 
-.popup {
+
+#delete-popup {
     background-color: aliceblue;
     border-radius: 20px;
     box-shadow: 5px 10px 15px rgb(55, 55, 55);
     color: black;
+    display: none;
+    left: calc(50% - 220px);
     margin: auto;
     padding: 20px;
-    position: relative;
+    position: fixed;
+    top: 35%;
     width: 400px;
-    display: none;
 }
 #delete {
     background-color: rgb(215, 54, 54);
@@ -98,6 +101,15 @@ form {
     background-color: rgb(158, 158, 160);
 }
 
+a {
+    color: aliceblue;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
 
 .gallery {
     display: flex;
@@ -199,5 +211,10 @@ img {
     }
     .image-info {
         padding: 0 10px;
+    }
+
+    #delete-popup {
+        width: 250px;
+        left: calc(50% - 145px);
     }
 }

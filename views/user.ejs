@@ -47,12 +47,10 @@
             <button class="edit-button" onclick="window.location.href = '/users/<%= user.id %>/edit'">Edit profile</button>
             <button class="edit-button-2" onclick="window.location.href = '/users/<%= user.id %>/profilepic'">Edit picture</button>
             <button class="edit-button-2" onclick="window.location.href = '/users/<%= user.id %>/password'">Change password</button>
-            <form action="/users/<%= user.id %>/delete" method="post">
-                <button class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Delete account</button>
-            </form>
+            <button id="deleting" class="delete-button">Delete account</button>
         </div>
 
-        <div class="popup">
+        <div id="delete-popup">
             <p>Do you really want to delete your account?</p>
             <form action="/users/<%= user.id %>/delete" method="post">
                 <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Yes</button>
@@ -60,5 +58,18 @@
             <button id="cancel" class="cancel-button">No</button>
         </div>
     </main>
+
+    <script>
+        let deletePopup = document.querySelector('#delete-popup');
+        let deleting = document.querySelector('#deleting');
+        let cancel = document.querySelector('#cancel');
+
+        deleting.addEventListener('click', () => {
+            deletePopup.style.display = 'block';
+        });
+        cancel.addEventListener('click', () => {
+            deletePopup.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
