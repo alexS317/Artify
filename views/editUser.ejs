@@ -60,8 +60,8 @@
         <label for="bio" hidden>Bio:</label>
         <textarea name="bio" id="bio" placeholder="Add info about yourself ..."><%= user.bio %></textarea>
         <div class="buttons">
-            <a class="cancel-button" href="/users/<%= user.id %>">Cancel</a>
             <button class="save-button" onclick="window.location.href = '/users/<%= user.id %>';">Save changes</button>
+            <a class="cancel-button" href="/users/<%= user.id %>">Cancel</a>
         </div>
         
     </form>

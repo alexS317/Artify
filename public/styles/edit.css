@@ -18,6 +18,10 @@ input {
     margin: 50px 15%;
 }
 
+h3 {
+    grid-column: span 2;
+}
+
 .general-info {
     display: grid;
     grid-row: 2;
@@ -36,9 +40,10 @@ input {
     width: 50%;
 }
 
-#bio {
+textarea {
     border-radius: 10px;
     border-width: 0;
+    color: black;
     box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.1rem;
@@ -84,7 +89,32 @@ input {
 }
 
 
-#profilepic, #picture {
+#picture {
+    background-color: white;
+    color: black;
+    grid-column: span 2;
+    box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
+    display: none;
+    box-shadow: none;
+}
+
+#pic {
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 3px 5px 8px -2px rgb(193, 190, 190) inset;
+    color: black;
+    display: flex;
+    font-size: 1.1rem;
+    grid-column: span 2;
+    height: 300px;
+    justify-content: center;
+    margin: 10px 15px;
+    padding: 8px;
+}
+
+
+#profilepic {
     /* display: none; */
     height: 100px;
     width: 200px;
@@ -132,5 +162,9 @@ input {
     }
     .general-info {
         width: 100%;
+    }
+
+    #pic {
+        height: 200px;
     }
 }

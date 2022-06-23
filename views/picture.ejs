@@ -17,13 +17,17 @@
             <li>Forum</li>
             <li onclick="window.location.href = '../'">My Profile</li>
         </ul>
-        <a href="/logout">Log out</a>
+        <a class="logout" href="/logout">Log out</a>
     </header>
     
-    <main>
-        <img src="/public/uploads/pictures/<%= picture.picturename %>" alt="picture" id="image">
-        <h3><%= picture.username %></h3>
-        <p><%= picture.description %></p>
+    <main class="content">
+        <div class="image-content">
+            <img src="/public/uploads/pictures/<%= picture.picturename %>" alt="picture" id="image">
+            <div class="image-info">
+                <h3 onclick="window.location.href = '/users/<%= picture.id %>'"><%= picture.username %></h3>
+                <p><%= picture.description %></p>
+            </div>
+        </div>
     </main>
 </body>
 </html>

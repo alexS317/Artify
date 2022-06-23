@@ -26,13 +26,18 @@
             <li class="selected">Gallery</li>
             <li>Favorites</li>
             <li>Subscriptions</li>
+            <% for(let i = 0; i < 1; i++) { %>
+                <button class="upload-button" onclick="window.location.href = '/users/<%= pictures[i].id %>/upload'">Add creation</button>
+            <% } %>
         </ul>
 
         <div class="gallery">
             <% for(let i = 0; i < pictures.length; i++) { %>
-                <img class="image" onclick="window.location.href = '/users/<%= pictures[i].id %>/gallery/<%= pictures[i].pid %>'" src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
+                <div class="image">
+                    <img onclick="window.location.href = '/users/<%= pictures[i].id %>/gallery/<%= pictures[i].pid %>'" src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
+                </div>
             <% } %>
-            </div>
+        </div>
     </main>
 </body>
 </html>
