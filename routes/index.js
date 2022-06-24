@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 router.get('/error', (req, res) => {
     res.render('error');
-})
+});
 
 
 // Routes to get login page and post login data to the server
