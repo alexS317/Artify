@@ -43,5 +43,8 @@ router.route('/:id/upload')
     .get(pictureController.editPicture)
     .post(pictureController.uploadPicture);
 
+// Route to delete a picture
+router.post('/:id/gallery/:pid/delete', pictureController.deletePicture);
+
 
 module.exports = router;    // Export file as a router to be used in other files

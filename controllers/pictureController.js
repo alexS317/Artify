@@ -50,9 +50,20 @@ function uploadPicture (req, res) {
     }
 }
 
+
+// Delete an image and redirect to the user's gallery view
+function deletePicture(req, res) {
+    pictureModel.deletePicture(req.params.pid)
+        // Automatically log out when deleted
+        .then(() => res.redirect('/users/' + req.params.id + '/gallery'))
+        // .catch(error => res.sendStatus(500));
+        .catch(error => res.redirect('/error'));
+}
+
 module.exports = {
     getPicturesForUser,
     getPicture,
     editPicture,
-    uploadPicture
+    uploadPicture,
+    deletePicture
 }

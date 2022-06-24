@@ -28,6 +28,9 @@
                 <h3 onclick="window.location.href = '/users/<%= picture.id %>'"><%= picture.username %></h3>
                 <p><%= picture.description %></p>
             </div>
+            <form action="/users/<%= picture.id %>/gallery/<%= picture.pid %>/delete" method="post">
+                <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= picture.id %>/gallery/<%= picture.pid %>/delete';">Delete drawing</button>
+            </form>
         </div>
     </main>
 </body>

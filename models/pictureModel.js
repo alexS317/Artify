@@ -52,9 +52,22 @@ let uploadPicture = (id, pictureName, pictureData) => new Promise((resolve, reje
     });
 });
 
+// Delete a picture based on the picture id
+let deletePicture = (pid) => new Promise((resolve, reject) => {
+    db.query(`DELETE FROM ccl_pictures WHERE pid = ${pid}`, function(err, user) {
+        if (err) {
+            reject(err);
+        } else {
+            console.log(`Picture is being deleted.`);
+            resolve(pid);
+        }
+    });
+});
+
 module.exports = {
     getPictures,
     getPicture,
     getPicturesForUser,
-    uploadPicture
+    uploadPicture,
+    deletePicture
 }
