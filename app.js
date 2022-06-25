@@ -1,6 +1,6 @@
 const express = require('express'); // Import express framework
 const app = express();              // Initialize server
-const port = process.env.PORT || 3000;
+const port = process.env.port || process.env.PORT || 3000;
 
 // Import fileupload module to make uploading files easier
 const fileUpload = require('express-fileupload');
