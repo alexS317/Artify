@@ -13,7 +13,7 @@
     <header>
         <h1>Artify</h1>
         <ul class="main-nav">
-            <li>Discover</li>
+            <li onclick="window.location.href = '/discover'">Discover</li>
             <li>Forum</li>
             <li class="selected">My Profile</li>
         </ul>
@@ -52,6 +52,7 @@
 
         <div id="delete-popup">
             <p>Do you really want to delete your account?</p>
+            <p>Warning: Your pictures won't be deleted automatically!</p>
             <form action="/users/<%= user.id %>/delete" method="post">
                 <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Yes</button>
             </form>

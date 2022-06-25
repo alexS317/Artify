@@ -13,7 +13,7 @@
     <header>
         <h1>Artify</h1>
         <ul class="main-nav">
-            <li onclick="window.location.href = '/discover'">Discover</li>
+            <li class="selected">Discover</li>
             <li>Forum</li>
             <li onclick="window.location.href = '/users/<%=ID%>'">My Profile</li>
         </ul>
@@ -21,13 +21,6 @@
     </header>
 
     <main>
-        <ul class="sub-nav">
-            <li onclick="window.location.href = './'">About</li>
-            <li class="selected">Gallery</li>
-            <li>Favorites</li>
-            <li>Subscriptions</li>
-        </ul>
-
         <div class="gallery">
             <% for(let i = 0; i < pictures.length; i++) { %>
                 <div class="image">

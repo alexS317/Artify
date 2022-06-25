@@ -13,25 +13,43 @@
     <header>
         <h1>Artify</h1>
         <ul class="main-nav">
-            <li>Discover</li>
+            <li onclick="window.location.href = '/discover'">Discover</li>
             <li>Forum</li>
-            <li onclick="window.location.href = '/users/<%= picture.id %>'">My Profile</li>
+            <li onclick="window.location.href = '/users/<%=ID%>'">My Profile</li>
         </ul>
         <a class="logout" href="/logout">Log out</a>
     </header>
     
     <main class="content">
-        <a href="/users/<%= picture.id %>/gallery">Back to gallery</a>
         <div class="image-content">
             <img src="/public/uploads/pictures/<%= picture.picturename %>" alt="picture" id="image">
             <div class="image-info">
                 <h3 onclick="window.location.href = '/users/<%= picture.id %>'"><%= picture.username %></h3>
                 <p><%= picture.description %></p>
             </div>
-            <form action="/users/<%= picture.id %>/gallery/<%= picture.pid %>/delete" method="post">
-                <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= picture.id %>/gallery/<%= picture.pid %>/delete';">Delete drawing</button>
-            </form>
+            <button id="deleting" class="delete-button">Delete drawing</button>
+
+            <div id="delete-popup">
+                <p>Do you really want to delete this artwork?</p>
+                <form action="/users/<%= picture.id %>/gallery/<%= picture.pid %>/delete" method="post">
+                    <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= picture.id %>/gallery/<%= picture.pid %>/delete';">Yes</button>
+                </form>
+                <button id="cancel" class="cancel-button">No</button>
+            </div>
         </div>
     </main>
+
+    <script>
+        let deletePopup = document.querySelector('#delete-popup');
+        let deleting = document.querySelector('#deleting');
+        let cancel = document.querySelector('#cancel');
+
+        deleting.addEventListener('click', () => {
+            deletePopup.style.display = 'block';
+        });
+        cancel.addEventListener('click', () => {
+            deletePopup.style.display = 'none';
+        });
+    </script>
 </body>
 </html>

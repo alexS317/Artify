@@ -13,10 +13,17 @@ router.get('/', (req, res) => {
         .catch(error => res.redirect('/error'));
 });
 
+// Error page
 router.get('/error', (req, res) => {
     res.render('error');
 });
 
+// Route to discover page to view all artworks
+router.get('/discover', (req, res) => {
+    pictureModel.getPictures()
+        .then(pictures => res.render('discover', {pictures, ID:req.cookies.ID}))
+        .catch(error => res.redirect('/error'));
+});
 
 // Routes to get login page and post login data to the server
 router.route('/login')
@@ -35,6 +42,7 @@ router.route('/login')
 // Route to get back to homepage when logging out
 router.get('/logout', (req, res) => {
     res.cookie('accessToken', {maxAge: 0});     // maxAge 0 deletes the cookie that authenticated the user
+    res.cookie('ID', {maxAge: 0});
     res.redirect('/');                          // Automatically redirect to homepage when logging out
     console.log('User logged out.');
 });

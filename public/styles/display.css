@@ -72,6 +72,13 @@ form {
     background-color: rgb(106, 81, 219);
 }
 
+.delete-button {
+    background-color: rgb(215, 54, 54);
+    color: white;
+}
+.delete-button:hover {
+    background-color: rgb(175, 39, 39);
+}
 
 #delete-popup {
     background-color: aliceblue;

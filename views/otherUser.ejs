@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artify - Gallery</title>
+    <title>Artify - <%= user.username %></title>
 
     <link rel="stylesheet" type="text/css" href="/public/styles/main.css">
     <link rel="stylesheet" type="text/css" href="/public/styles/display.css">
@@ -22,18 +22,24 @@
 
     <main>
         <ul class="sub-nav">
-            <li onclick="window.location.href = './'">About</li>
-            <li class="selected">Gallery</li>
+            <li class="selected">About</li>
+            <li onclick="window.location.href = '/users/<%= user.id%>/gallery'">Gallery</li>
             <li>Favorites</li>
             <li>Subscriptions</li>
         </ul>
 
-        <div class="gallery">
-            <% for(let i = 0; i < pictures.length; i++) { %>
-                <div class="image">
-                    <img onclick="window.location.href = '/users/<%= pictures[i].id %>/gallery/<%= pictures[i].pid %>'" src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
-                </div>
+        <div class="user">
+            <div class="general-info">
+                <p id="username"><%= user.username %></p>
+                <p><%= user.pronouns %></p>
+                <p><%= user.location %></p>
+            </div>
+            <% if(user.profilepic === null) { %>
+                <img class="profile-pic" src="/public/Assets/blank-profile-picture.png" alt="empty profile picture">
+            <% } else { %>
+                <img class="profile-pic" src="/public/uploads/profilepics/<%= user.profilepic %>" alt="profile picture of this user">
             <% } %>
+                <p id="bio"><%= user.bio %></p>
         </div>
     </main>
 </body>

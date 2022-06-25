@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artify - Gallery</title>
+    <title>Artify - Artwork</title>
 
     <link rel="stylesheet" type="text/css" href="/public/styles/main.css">
     <link rel="stylesheet" type="text/css" href="/public/styles/display.css">
@@ -19,21 +19,14 @@
         </ul>
         <a class="logout" href="/logout">Log out</a>
     </header>
-
-    <main>
-        <ul class="sub-nav">
-            <li onclick="window.location.href = './'">About</li>
-            <li class="selected">Gallery</li>
-            <li>Favorites</li>
-            <li>Subscriptions</li>
-        </ul>
-
-        <div class="gallery">
-            <% for(let i = 0; i < pictures.length; i++) { %>
-                <div class="image">
-                    <img onclick="window.location.href = '/users/<%= pictures[i].id %>/gallery/<%= pictures[i].pid %>'" src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
-                </div>
-            <% } %>
+    
+    <main class="content">
+        <div class="image-content">
+            <img src="/public/uploads/pictures/<%= picture.picturename %>" alt="picture" id="image">
+            <div class="image-info">
+                <h3 onclick="window.location.href = '/users/<%= picture.id %>'"><%= picture.username %></h3>
+                <p><%= picture.description %></p>
+            </div>
         </div>
     </main>
 </body>
