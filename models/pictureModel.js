@@ -26,7 +26,7 @@ let getPicture = (pid) => new Promise((resolve, reject) => {
 
 // Select all pictures from a specific user
 let getPicturesForUser = (id) => new Promise((resolve, reject) => {
-    db.query(`SELECT * FROM ccl_pictures WHERE id = ${id}`, function (err, pictures) {
+    db.query(`SELECT * FROM ccl_pictures WHERE id = ${id} ORDER by pid DESC`, function (err, pictures) {
         if (err) {
             reject(err);
         } else {
