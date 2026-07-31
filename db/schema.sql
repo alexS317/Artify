@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS artify;
+USE artify;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    pronouns VARCHAR(50),
+    location VARCHAR(255),
+    bio TEXT,
+    profilepic VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS pictures (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    u_id INT NOT NULL,
+    filename VARCHAR(255) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (u_id) REFERENCES users(id) ON DELETE CASCADE
+);

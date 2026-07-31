@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express'); // Import express framework
 const app = express();              // Initialize server
 const port = process.env.port || process.env.PORT || 3000;

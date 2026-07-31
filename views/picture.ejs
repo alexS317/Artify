@@ -22,17 +22,17 @@
     
     <main class="content">
         <div class="image-content">
-            <img src="/public/uploads/pictures/<%= picture.picturename %>" alt="picture" id="image">
+            <img src="/public/uploads/pictures/<%= picture.filename %>" alt="picture" id="image">
             <div class="image-info">
-                <h3 onclick="window.location.href = '/users/<%= picture.id %>'"><%= picture.username %></h3>
+                <h3 onclick="window.location.href = '/users/<%= picture.u_id %>'"><%= picture.username %></h3>
                 <p><%= picture.description %></p>
             </div>
             <button id="deleting" class="delete-button">Delete drawing</button>
 
             <div id="delete-popup">
                 <p>Do you really want to delete this artwork?</p>
-                <form action="/users/<%= picture.id %>/gallery/<%= picture.pid %>/delete" method="post">
-                    <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= picture.id %>/gallery/<%= picture.pid %>/delete';">Yes</button>
+                <form action="/users/<%= picture.u_id %>/gallery/<%= picture.id %>/delete" method="post">
+                    <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= picture.u_id %>/gallery/<%= picture.id %>/delete';">Yes</button>
                 </form>
                 <button id="cancel" class="cancel-button">No</button>
             </div>

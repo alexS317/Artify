@@ -24,7 +24,7 @@
         <div class="gallery">
             <% for(let i = 0; i < pictures.length; i++) { %>
                 <div class="image">
-                    <img onclick="window.location.href = '/users/<%= pictures[i].id %>/gallery/<%= pictures[i].pid %>'" src="/public/uploads/pictures/<%= pictures[i].picturename %>" alt="picture">
+                    <img onclick="window.location.href = '/users/<%= pictures[i].id %>/gallery/<%= pictures[i].id %>'" src="/public/uploads/pictures/<%= pictures[i].filename %>" alt="picture">
                 </div>
             <% } %>
         </div>

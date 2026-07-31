@@ -52,7 +52,7 @@
 
         <div id="delete-popup">
             <p>Do you really want to delete your account?</p>
-            <p>Warning: Your pictures won't be deleted automatically!</p>
+            <p>Warning: All your pictures will be deleted!</p>
             <form action="/users/<%= user.id %>/delete" method="post">
                 <button id="delete" class="delete-button" onclick="window.location.href = '/users/<%= user.id %>/delete';">Yes</button>
             </form>

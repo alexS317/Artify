@@ -1,115 +1,127 @@
-const bcrypt = require('bcrypt');                       // Import bcrypt module to encrypt passwords
-const db = require('../services/database').config;      // Import database configuration
+const bcrypt = require("bcrypt"); // Import bcrypt module to encrypt passwords
+const db = require("../services/database").config; // Import database configuration
 
 // Select all users from the database
-let getUsers = () => new Promise((resolve, reject) => {
-    db.query("SELECT * FROM ccl_users", function (err, users) {
-        if (err) {
-            reject(err);
-        } else {
-            // console.log(users);
-            resolve(users);
-        }
+let getUsers = () =>
+  new Promise((resolve, reject) => {
+    db.query("SELECT * FROM users", function (err, users) {
+      if (err) {
+        reject(err);
+      } else {
+        // console.log(users);
+        resolve(users);
+      }
     });
-});
-
+  });
 
 // Select a specific user based on their id
-let getUser = (id) => new Promise((resolve, reject) => {
-    db.query(`SELECT * FROM ccl_users WHERE id = ${id}`, function (err, user) {
-        if (err) {
-            reject(err);
-        } else {
-            // console.log(user[0]);
-            resolve(user[0]);
-        }
+let getUser = (id) =>
+  new Promise((resolve, reject) => {
+    db.query(`SELECT * FROM users WHERE id = ${id}`, function (err, user) {
+      if (err) {
+        reject(err);
+      } else {
+        // console.log(user[0]);
+        resolve(user[0]);
+      }
     });
-});
-
+  });
 
 // Update a user's data and insert it into database
-let updateUser = (userData) => new Promise(function(resolve, reject) {
-    let sql = "UPDATE ccl_users SET " +
-    "username = " + db.escape(userData.username) +
-    ", email = " + db.escape(userData.email) +
-    ", pronouns = " + db.escape(userData.pronouns) +
-    ", location = " + db.escape(userData.location) +
-    ", bio = " + db.escape(userData.bio) +
-    " WHERE id = " + parseInt(userData.id);
+let updateUser = (userData) =>
+  new Promise(function (resolve, reject) {
+    let sql =
+      "UPDATE users SET " +
+      "username = " +
+      db.escape(userData.username) +
+      ", email = " +
+      db.escape(userData.email) +
+      ", pronouns = " +
+      db.escape(userData.pronouns) +
+      ", location = " +
+      db.escape(userData.location) +
+      ", bio = " +
+      db.escape(userData.bio) +
+      " WHERE id = " +
+      parseInt(userData.id);
 
     // console.log(sql);
 
-    db.query(sql, function(err, userData) {
-        if (err) {
-            reject(err);
-        } else {
-            // console.log(userData);
-            resolve(userData);
-        }
+    db.query(sql, function (err, userData) {
+      if (err) {
+        reject(err);
+      } else {
+        // console.log(userData);
+        resolve(userData);
+      }
     });
-});
-
+  });
 
 // Update a user's profile picture and insert the picture name into the database
-let updateProfilepic = (id, filename) => new Promise((resolve, reject) => {
-    let sql = `UPDATE ccl_users SET profilepic = ${db.escape(filename)} WHERE id = ${id}`;
+let updateProfilepic = (id, filename) =>
+  new Promise((resolve, reject) => {
+    let sql = `UPDATE users SET profilepic = ${db.escape(filename)} WHERE id = ${id}`;
     // console.log(sql);
 
     db.query(sql, function (err) {
-        if (err) reject(err);
-        else resolve();
+      if (err) reject(err);
+      else resolve();
     });
-});
-
+  });
 
 // Change only the user password
-let changePassword = (userData) => new Promise(async function (resolve, reject) {
-    let pw = await bcrypt.hash(userData.password, 10);      // Encrypt password
-    let sql = `UPDATE ccl_users SET password = ${db.escape(pw)} WHERE id = ${parseInt(userData.id)}`;
+let changePassword = (userData) =>
+  new Promise(async function (resolve, reject) {
+    let pw = await bcrypt.hash(userData.password, 10); // Encrypt password
+    let sql = `UPDATE users SET password = ${db.escape(pw)} WHERE id = ${parseInt(userData.id)}`;
     // console.log(sql);
 
-    db.query(sql, function(err, userData) {
-        if (err) reject(err);
-        else resolve(userData);
+    db.query(sql, function (err, userData) {
+      if (err) reject(err);
+      else resolve(userData);
     });
-});
-
+  });
 
 // Register a new user and insert them into database
-let registerUser = (userData) => new Promise(async function (resolve, reject) {
+let registerUser = (userData) =>
+  new Promise(async function (resolve, reject) {
     let pw = await bcrypt.hash(userData.password, 10);
-    let sql = "INSERT INTO ccl_users (username, email, password) VALUES (" +
-        db.escape(userData.username) + "," +
-        db.escape(userData.email) + "," +
-        db.escape(pw) + ")";
+    let sql =
+      "INSERT INTO users (username, email, password) VALUES (" +
+      db.escape(userData.username) +
+      "," +
+      db.escape(userData.email) +
+      "," +
+      db.escape(pw) +
+      ")";
 
     // console.log(sql);
 
     db.query(sql, function (err, user) {
-        if (err) reject(err);
-        else resolve(userData);
+      if (err) reject(err);
+      else resolve(userData);
     });
-});
+  });
 
 // Delete a user based on their id
-let deleteUser = (id) => new Promise((resolve, reject) => {
-    db.query(`DELETE FROM ccl_users WHERE id = ${id}`, function(err, user) {
-        if (err) {
-            reject(err);
-        } else {
-            console.log(`User is being deleted.`);
-            resolve(id);
-        }
+let deleteUser = (id) =>
+  new Promise((resolve, reject) => {
+    db.query(`DELETE FROM users WHERE id = ${id}`, function (err, user) {
+      if (err) {
+        reject(err);
+      } else {
+        console.log(`User is being deleted.`);
+        resolve(id);
+      }
     });
-});
-
+  });
 
 module.exports = {
-    getUsers,
-    getUser,
-    updateUser,
-    updateProfilepic,
-    changePassword,
-    registerUser,
-    deleteUser
-}
+  getUsers,
+  getUser,
+  updateUser,
+  updateProfilepic,
+  changePassword,
+  registerUser,
+  deleteUser,
+};

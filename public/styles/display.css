@@ -163,7 +163,8 @@ img {
 }
 
 #image {
-    max-width: 900px;
+    max-height: 600px;
+    object-fit: contain;    
 }
 
 .image-info {

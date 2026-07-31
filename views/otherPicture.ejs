@@ -22,9 +22,9 @@
     
     <main class="content">
         <div class="image-content">
-            <img src="/public/uploads/pictures/<%= picture.picturename %>" alt="picture" id="image">
+            <img src="/public/uploads/pictures/<%= picture.filename %>" alt="picture" id="image">
             <div class="image-info">
-                <h3 onclick="window.location.href = '/users/<%= picture.id %>'"><%= picture.username %></h3>
+                <h3 onclick="window.location.href = '/users/<%= picture.u_id %>'"><%= picture.username %></h3>
                 <p><%= picture.description %></p>
             </div>
         </div>

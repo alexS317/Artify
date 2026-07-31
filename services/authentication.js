@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');    // Import JSONWebToken module to be able to authenticate user (with the help of cookies)
-const AUTH_TOKEN_SECRET = require('../secrets').auth_token_secret;
 const bcrypt = require('bcrypt');       // Import bcrypt module to be able to encrypt user passwords
+const AUTH_TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET;
 
 
 // Compare the password user is entering to log in with password in database
